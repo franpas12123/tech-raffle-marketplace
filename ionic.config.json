@@ -1,0 +1,7 @@
+{
+  "name": "rapol-website",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
