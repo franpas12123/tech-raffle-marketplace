@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'com.website.rapol',
   appName: 'rapol-website',
   webDir: 'dist',
   bundledWebRuntime: false
