@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: local("Montserrat"),
+   url(@/assets/fonts/Montserrat.ttf) format("truetype");
+}
+
+* {
+  font-family: 'Montserrat', 'Roboto', Verdana, sans-serif !important;
+
+  a {
+    text-decoration: none;
+  }
+}
