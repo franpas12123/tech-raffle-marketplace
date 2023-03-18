@@ -24,7 +24,7 @@ import SwiperSlide from '@/components/landing/SwiperSlide.vue';
 
 <style lang="scss" scoped>
 .closing-soon {
-  height: 350px;
+  min-height: 200px;
 
   h1 b {
     font-weight: 800;
