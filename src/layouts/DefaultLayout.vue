@@ -1,12 +1,10 @@
 <template>
   <ion-app>
-    <HeaderContainer />
-
-    <ion-content class="ion-padding">
+    <ion-content color="dark">
+      <HeaderContainer />
       <slot name="content">Fallback</slot>
+      <FooterContainer />
     </ion-content>
-
-    <FooterContainer />
   </ion-app>
 </template>
 
