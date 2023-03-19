@@ -1,7 +1,7 @@
 <template>
   <ion-footer>
     <ion-toolbar>
-      <ion-grid :fixed="true">
+      <ion-grid fixed>
         <ion-row>
           <ion-col size="3">
             <ion-row class="ion-text-center">
