@@ -1,7 +1,7 @@
 <template>
   <ion-header>
     <ion-toolbar>
-      <ion-grid :fixed="true">
+      <ion-grid fixed>
         <ion-row class="ion-align-items-center">
           <ion-col size-lg="2" class="ion-justify-content-start">
             <ion-row>

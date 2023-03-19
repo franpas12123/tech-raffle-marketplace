@@ -8,27 +8,29 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/LandingPage.vue')
   },
   {
-    path: '/tabs/',
-    component: TabsPage,
-    children: [
-      {
-        path: '',
-        redirect: '/tabs/tab1'
-      },
-      {
-        path: 'tab1',
-        component: () => import('@/views/Tab1Page.vue')
-      },
-      {
-        path: 'tab2',
-        component: () => import('@/views/Tab2Page.vue')
-      },
-      {
-        path: 'tab3',
-        component: () => import('@/views/Tab3Page.vue')
-      }
-    ]
-  }
+    path: '/privacy-policy',
+    props: {
+      title: 'Privacy Policy',
+    },
+    component: () => import('@/components/base/SinglePageText.vue')
+  },
+  {
+    path: '/user-agreement',
+    props: {
+      title: 'User Agreement',
+    },
+    component: () => import('@/components/base/SinglePageText.vue')
+  },
+  {
+    path: '/how-it-works',
+    props: {
+      title: 'How It Works',
+    },
+    component: () => import('@/components/base/SinglePageVideo.vue')
+  },
+  // will match everything and put it under `$route.params.pathMatch`
+  { path: '/:pathMatch(.*)*', name: 'NotFound', 
+    component: () => import('@/views/NotFound.vue')}
 ]
 
 const router = createRouter({
