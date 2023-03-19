@@ -27,7 +27,10 @@ const routes: Array<RouteRecordRaw> = [
       title: 'How It Works',
     },
     component: () => import('@/components/base/SinglePageVideo.vue')
-  }
+  },
+  // will match everything and put it under `$route.params.pathMatch`
+  { path: '/:pathMatch(.*)*', name: 'NotFound', 
+    component: () => import('@/views/NotFound.vue')}
 ]
 
 const router = createRouter({
