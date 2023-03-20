@@ -22,6 +22,13 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/components/base/SinglePageText.vue')
   },
   {
+    path: '/contact-us',
+    props: {
+      title: 'Contact Us',
+    },
+    component: () => import('@/views/information/ContactUs.vue')
+  },
+  {
     path: '/how-it-works',
     props: {
       title: 'How It Works',
