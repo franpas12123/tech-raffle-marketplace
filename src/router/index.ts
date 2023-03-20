@@ -28,6 +28,13 @@ const routes: Array<RouteRecordRaw> = [
     },
     component: () => import('@/components/base/SinglePageVideo.vue')
   },
+  {
+    path: '/faq',
+    props: {
+      title: 'Frequently Asked Questions (FAQs)',
+    },
+  component: () => import('@/components/base/SinglePageFAQ.vue')
+  },
   // will match everything and put it under `$route.params.pathMatch`
   { path: '/:pathMatch(.*)*', name: 'NotFound', 
     component: () => import('@/views/NotFound.vue')}
