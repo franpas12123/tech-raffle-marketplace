@@ -40,11 +40,32 @@ const routes: Array<RouteRecordRaw> = [
     props: {
       title: 'Frequently Asked Questions (FAQs)',
     },
-  component: () => import('@/components/base/SinglePageFAQ.vue')
+    component: () => import('@/components/base/SinglePageFAQ.vue')
+  },
+  // user routes
+  {
+    path: '/user/:id',
+    name: 'userDetails',
+    component: () => import('@/layouts/UserDetailsLayout.vue'),
+    children: [
+      {
+        name: 'changePassword',
+        path: 'change-password',
+        component: () => import('@/components/user_details/ChangePassword.vue'),
+      },
+      {
+        name: 'myAddress',
+        path: 'my-address',
+        component: () => import('@/components/user_details/MyAddress.vue'),
+      }
+    ]
   },
   // will match everything and put it under `$route.params.pathMatch`
-  { path: '/:pathMatch(.*)*', name: 'NotFound', 
-    component: () => import('@/views/NotFound.vue')}
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound', 
+    component: () => import('@/views/NotFound.vue')
+  }
 ]
 
 const router = createRouter({
