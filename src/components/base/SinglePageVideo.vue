@@ -34,7 +34,7 @@ const singlePageBase = ref(null)
 const singlePageBaseHeight = useElementSize(singlePageBase).height
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 iframe {
   margin-bottom: 2rem;
 }
