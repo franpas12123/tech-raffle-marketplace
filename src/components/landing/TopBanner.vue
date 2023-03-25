@@ -1,40 +1,38 @@
 <template>
-  <ion-grid fixed>
-    <ion-row>
-      <ion-col>
-        <div class="img-container">
-          <ion-img class="banner" :src="`${assetFolderTest}/idealz-landing-banner-top-wide.jpeg`" alt=""></ion-img>
-          <ion-row class="banner-text-container ion-align-items-center">
-            <ion-col>
-              <h2 class="banner-text-title"><i>WIN</i></h2>
-              <h3 class="banner-text-subtitle">Toyota Fortuner 2023</h3>
-              <p class="banner-text-info">Buy a out <b>Toro Hoodie</b> and make it yours!</p>
-              <ion-button class="ion-margin-top ion-text-capitalize" :href="topBannerURL" @click="onTopBannerClick()"
-                fill="clear" text-capitalize="false">
-                <b>See details</b>
-              </ion-button>
-            </ion-col>
-          </ion-row>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <a :href="topBannerMiniLeftURL">
-          <ion-img class="banner" :src="`${assetFolderTest}/idealz-landing-banner-top-mini.png`" alt=""></ion-img>
-        </a>
-      </ion-col>
-      <ion-col>
-        <a :href="topBannerMiniRightURL">
-          <ion-img class="banner" :src="`${assetFolderTest}/idealz-landing-banner-top-mini-right.png`" alt=""></ion-img>
-        </a>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-row>
+    <ion-col>
+      <div class="img-container">
+        <ion-img class="banner" :src="`${assetFolderTest}/idealz-landing-banner-top-wide.jpeg`" alt=""></ion-img>
+        <ion-row class="banner-text-container ion-align-items-center">
+          <ion-col>
+            <h2 class="banner-text-title"><i>WIN</i></h2>
+            <h3 class="banner-text-subtitle">Toyota Fortuner 2023</h3>
+            <p class="banner-text-info">Buy a out <b>Toro Hoodie</b> and make it yours!</p>
+            <ion-button class="ion-margin-top ion-text-capitalize" :href="topBannerURL" @click="onTopBannerClick()"
+              fill="clear" text-capitalize="false">
+              <b>See details</b>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <a :href="topBannerMiniLeftURL">
+        <ion-img class="banner" :src="`${assetFolderTest}/idealz-landing-banner-top-mini.png`" alt=""></ion-img>
+      </a>
+    </ion-col>
+    <ion-col>
+      <a :href="topBannerMiniRightURL">
+        <ion-img class="banner" :src="`${assetFolderTest}/idealz-landing-banner-top-mini-right.png`" alt=""></ion-img>
+      </a>
+    </ion-col>
+  </ion-row>
 </template>
 
 <script setup lang="ts">
-import { IonImg, IonGrid, IonRow, IonCol, IonButton } from '@ionic/vue';
+import { IonImg, IonRow, IonCol, IonButton } from '@ionic/vue';
 import { useRoute } from 'vue-router'
 const assetFolderTest = './assets/test'
 
