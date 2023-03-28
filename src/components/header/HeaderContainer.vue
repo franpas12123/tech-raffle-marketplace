@@ -1,57 +1,53 @@
 <template>
   <ion-header>
     <ion-toolbar>
-      <ion-grid fixed>
-        <ion-row class="ion-align-items-center">
-          <ion-col size-lg="2" class="ion-justify-content-start">
-            <ion-row>
-              <ion-col>
-                <ion-title>RAPOL</ion-title>
-              </ion-col>
-            </ion-row>
-          </ion-col>
-          <ion-col class="ion-hide-lg-down">
-            <ion-row class="ion-justify-content-center ion-align-items-center">
-              <ion-col>
-                Prizes
-              </ion-col>
-              <ion-col>
-                Products
-              </ion-col>
-              <ion-col>
-                Winners
-              </ion-col>
-              <ion-col>
-                FAQ
-              </ion-col>
-              <ion-col>
-                Charity
-              </ion-col>
-            </ion-row>
-          </ion-col>
-          <ion-col size="1"></ion-col>
-          <ion-col size="2">
-            <ion-button color="light" aria-label="Login/Signup">
-              login / signup
-              <ion-icon :icon="personOutline" aria-hidden="true"></ion-icon>
-            </ion-button>
-          </ion-col>
-          <ion-col size="1">
-            <ion-button color="light" aria-label="Cart">
-              cart({{ cartItemsCount }})
-              <ion-icon :icon="cart" aria-hidden="true"></ion-icon>
-            </ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+      <ion-buttons slot="start">
+        <ion-button color="dark" class="logo" @click="() => router.push('/')">
+          <ion-img class="banner" :src="`./assets/icons/rapol-logo.svg`" alt=""></ion-img>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons class="nav-links">
+        <ion-button @click="() => router.push('/prizes')">
+          Prizes
+        </ion-button>
+        <ion-button @click="() => router.push('/products')">
+          Products
+        </ion-button>
+        <ion-button @click="() => router.push('/winners')">
+          Winners
+        </ion-button>
+        <ion-button @click="() => router.push('/faq')">
+          FAQ
+        </ion-button>
+        <ion-button @click="() => router.push('/charity')">
+          Charity
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <!-- @Todo: remove href later -->
+        <ion-button aria-label="Login/Signup" @click="() => router.push('/login')" href="/login">
+          login / signup
+          <ion-icon :src="`${assets}/user-transparent.svg`" aria-hidden="true"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button aria-label="Cart">
+          cart({{ cartItemsCount }})
+          <ion-icon :src="`${assets}/cart-transparent.svg`" aria-hidden="true"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
 </template>
 
 <script setup lang="ts">
-import { IonHeader, IonTitle, IonToolbar, IonCol, IonGrid, IonRow, IonIcon, IonButton } from '@ionic/vue';
-import { cart, personOutline } from 'ionicons/icons';
+import { IonHeader, IonToolbar, IonIcon, IonButton, IonButtons } from '@ionic/vue';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
+
+const assets = './assets/icons'
 
 const cartItemsCount = ref(0)
 </script>
@@ -63,7 +59,10 @@ const cartItemsCount = ref(0)
 }
 
 ion-button {
-  --background: #23242f;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --background: #23242f !important;
+  --border-radius: 30px !important;
   --color: #fff;
 
   font-size: 9px;
@@ -71,6 +70,24 @@ ion-button {
   ion-icon {
     margin-left: 4px;
     font-size: 16px;
+  }
+}
+
+.nav-links {
+  ion-button {
+    --background: transparent !important;
+  }
+}
+
+.logo {
+  width: 100px;
+
+  ion-button {
+    border-radius: 0 !important;
+  }
+
+  ion-img {
+    padding: 10px;
   }
 }
 
