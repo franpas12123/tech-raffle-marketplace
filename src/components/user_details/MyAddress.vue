@@ -1,73 +1,160 @@
 <template>
   <h1>{{ title }}</h1>
   <slot name="content" class="container">
-    <form @submit.prevent="onClick">
-      <ion-row v-for="(c, i) in config" :key="i" class="container">
-        <ion-col size="12" size-sm="6">
-          <ion-input :ref="c.name" v-model="c.vModel" :type="c.showPass ? 'text' : 'password'" :label="c.placeholder"
-            label-placement="floating" fill="outline"></ion-input>
-          <!-- <ion-icon :icon="getEyeIcon(c.showPass)" slot="end"></ion-icon> -->
-          <!-- {{ c.showPass }} -->
+    <form @submit.prevent="onClick()">
+      <div class="address-buttons ion-margin-vertical">
+        <ion-row>
+          <ion-col v-for="(btn, index) in addresses" :key="`address-btn-${index}`">
+            <BaseButton :text="btn.name" :wider="true" @click.prevent="currentAddressView = index"></BaseButton>
+          </ion-col>
+        </ion-row>
+      </div>
+      <ion-row class="container">
+        <ion-col v-for="(c, i) in addresses[currentAddressView].address" :key="i" size="12"
+          :size-sm="c.fullWidth ? '12' : '6'">
+          <ion-input :ref="c.name" v-model="c.vModel" :label="c.placeholder" label-placement="floating"
+            fill="outline"></ion-input>
         </ion-col>
       </ion-row>
-      <SingleButton text="Save"></SingleButton>
+      <SingleButton text="Save" :wider="true" type="submit"></SingleButton>
     </form>
   </slot>
 </template>
 
 <script setup lang="ts">
-import { IonRow, IonCol, IonInput, IonButton, IonIcon, IonItem } from '@ionic/vue';
-import { send, eyeOutline, eyeOffOutline } from 'ionicons/icons';
-import { computed, reactive } from 'vue';
+import { IonRow, IonCol, IonInput } from '@ionic/vue';
+import { reactive, ref } from 'vue';
 import SingleButton from '@/components/base/SingleButton.vue'
+import BaseButton from '../base/BaseButton.vue';
 
 defineProps({
-  title: String
+  title: {
+    type: String,
+    default: 'My Address'
+  }
 })
 
-const onPasswordRevealClick = (index: number) => {
-  config[index].showPass = !config[index].showPass
-  console.log('type', config[index].showPass)
-}
-
-// change password logic
-interface ChangePassword {
-  currentPass: object,
-  newPass: object,
-  confirmPass: object,
-}
-
-const getEyeIcon = (type: boolean) => type ? eyeOutline : eyeOffOutline
-// config
-const config = reactive([
+const currentAddressView = ref(0)
+const addresses = reactive([
   {
-    name: 'current',
-    showPass: false,
-    vModel: '',
-    placeholder: 'Current password',
+    name: 'Home',
+    address: [
+      {
+        name: 'region',
+        vModel: '',
+        placeholder: 'Region',
+      },
+      {
+        name: 'province',
+        vModel: '',
+        placeholder: 'Province',
+      },
+      {
+        name: 'city',
+        vModel: '',
+        placeholder: 'City',
+      },
+      {
+        name: 'barangay',
+        vModel: '',
+        placeholder: 'Barangay',
+      },
+      {
+        name: 'address1',
+        vModel: '',
+        fullWidth: true,
+        placeholder: 'Address Line 1',
+      },
+      {
+        name: 'address2',
+        vModel: '',
+        fullWidth: true,
+        placeholder: 'Address Line 2',
+      }
+    ]
   },
   {
-    name: 'new',
-    showPass: false,
-    vModel: '',
-    placeholder: 'New password',
+    name: 'Work',
+    address: [
+      {
+        name: 'region',
+        vModel: '',
+        placeholder: 'Region',
+      },
+      {
+        name: 'province',
+        vModel: '',
+        placeholder: 'Province',
+      },
+      {
+        name: 'city',
+        vModel: '',
+        placeholder: 'City',
+      },
+      {
+        name: 'barangay',
+        vModel: '',
+        placeholder: 'Barangay',
+      },
+      {
+        name: 'address1',
+        vModel: '',
+        fullWidth: true,
+        placeholder: 'Address Line 1',
+      },
+      {
+        name: 'address2',
+        vModel: '',
+        fullWidth: true,
+        placeholder: 'Address Line 2',
+      }
+    ]
   },
   {
-    name: 'confirm',
-    showPass: false,
-    vModel: '',
-    placeholder: 'Confirm password',
+    name: 'Other',
+    address: [
+      {
+        name: 'region',
+        vModel: '',
+        placeholder: 'Region',
+      },
+      {
+        name: 'province',
+        vModel: '',
+        placeholder: 'Province',
+      },
+      {
+        name: 'city',
+        vModel: '',
+        placeholder: 'City',
+      },
+      {
+        name: 'barangay',
+        vModel: '',
+        placeholder: 'Barangay',
+      },
+      {
+        name: 'address1',
+        vModel: '',
+        fullWidth: true,
+        placeholder: 'Address Line 1',
+      },
+      {
+        name: 'address2',
+        vModel: '',
+        fullWidth: true,
+        placeholder: 'Address Line 2',
+      }
+    ]
   }
 ])
 
-const getConfig = (name: string) => config.find(c => c.name === name)
+const onClick = () => console.log('saving address!', addresses[currentAddressView.value])
 
-const onClick = () => console.log('password changed!', getConfig('new')?.vModel)
-
-const buttonDisabled = computed(() => {
-  console.log('current', getConfig('current')?.vModel, '\nnew', getConfig('new')?.vModel, '\nconfirm', getConfig('confirm')?.vModel, '\n', getConfig('new')?.vModel === getConfig('confirm')?.vModel)
-  return !(getConfig('current')?.vModel && getConfig('new')?.vModel && getConfig('new')?.vModel === getConfig('confirm')?.vModel)
-})
+// const buttonDisabled = computed(() => {
+//   console.log('current', getConfig('current')?.vModel, '\nnew', getConfig('new')?.vModel, '\nconfirm', getConfig('confirm')?.vModel, '\n', getConfig('new')?.vModel === getConfig('confirm')?.vModel)
+//   return !(getConfig('current')?.vModel && getConfig('new')?.vModel && getConfig('new')?.vModel === getConfig('confirm')?.vModel)
+// })
 
 </script>
 
@@ -75,14 +162,13 @@ const buttonDisabled = computed(() => {
 h1 {
   font-size: 25px;
   font-weight: 700;
-
-  /* margin-top: 3rem;
-  margin-bottom: 1.5rem; */
 }
 
 .container {
-  /* max-height: 60vh; */
-  /* overflow: scroll; */
   margin-bottom: 2rem;
+}
+
+.address-buttons {
+  display: flex;
 }
 </style>
