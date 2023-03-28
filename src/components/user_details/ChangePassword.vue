@@ -1,13 +1,11 @@
 <template>
-  <!-- <h1 class="ion-margin-bottom">{{ title }}</h1> -->
+  <h1 class="ion-margin-bottom">{{ title }}</h1>
   <slot name="content" class="container">
     <form @submit.prevent="onClick">
       <ion-row v-for="(c, i) in config" :key="i" class="container">
         <ion-col size="12" size-lg="6">
           <ion-input :ref="c.name" v-model="c.vModel" :type="c.showPass ? 'text' : 'password'" :label="c.placeholder"
             label-placement="floating" fill="outline"></ion-input>
-          <!-- <ion-icon :icon="getEyeIcon(c.showPass)" slot="end"></ion-icon> -->
-          <!-- {{ c.showPass }} -->
         </ion-col>
       </ion-row>
       <ion-row ref="row" class="ion-margin-top ion-margin-left">
@@ -21,12 +19,15 @@
 </template>
 
 <script setup lang="ts">
-import { IonRow, IonCol, IonInput, IonButton, IonIcon, IonItem } from '@ionic/vue';
+import { IonRow, IonCol, IonInput, IonButton, IonIcon } from '@ionic/vue';
 import { send, eyeOutline, eyeOffOutline } from 'ionicons/icons';
 import { computed, reactive } from 'vue';
 
-const props = defineProps({
-  title: String
+defineProps({
+  title: {
+    type: String,
+    default: 'Change Password'
+  }
 })
 
 const onPasswordRevealClick = (index: number) => {
