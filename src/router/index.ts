@@ -9,6 +9,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/privacy-policy',
+    name: 'privacy policy',
     props: {
       title: 'Privacy Policy',
     },
@@ -16,6 +17,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/user-agreement',
+    name: 'user agreement',
     props: {
       title: 'User Agreement',
     },
@@ -23,6 +25,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/contact-us',
+    name: 'contact us',
     props: {
       title: 'Contact Us',
     },
@@ -30,6 +33,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/how-it-works',
+    name: 'how it works',
     props: {
       title: 'How It Works',
     },
@@ -37,6 +41,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/faq',
+    name: 'faq',
     props: {
       title: 'Frequently Asked Questions (FAQs)',
     },
@@ -51,6 +56,9 @@ const routes: Array<RouteRecordRaw> = [
       {
         name: 'changePassword',
         path: 'change-password',
+        props: {
+          title: 'Change Password',
+        },
         component: () => import('@/components/user_details/ChangePassword.vue'),
       },
       {
@@ -65,7 +73,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/:pathMatch(.*)*',
     name: 'NotFound', 
     component: () => import('@/views/NotFound.vue')
-  }
+  },
 ]
 
 const router = createRouter({
