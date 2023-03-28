@@ -1,13 +1,13 @@
 <template>
   <ion-row class="ion-margin-top ion-margin-left">
-    <ion-button :color="color" type="submit" :disabled="disabled" @click="$emit('clicked')">
-      <ion-icon v-if="icon" slot="start" :icon="icon"></ion-icon>
-      {{ text }}
-    </ion-button>
+    <BaseButton :type="type" :text="text" :disabled="disabled" :color="color" :icon="icon" :wider="wider"
+      @clicked="$emit('clicked')">
+    </BaseButton>
   </ion-row>
 </template>
 
 <script setup lang="ts">
+import BaseButton from './BaseButton.vue';
 defineProps({
   icon: {
     type: String,
@@ -23,8 +23,24 @@ defineProps({
   text: {
     type: String,
     required: true,
+  },
+  wider: {
+    type: Boolean,
+    default: false
+  },
+  type: {
+    type: String,
+    default: ''
   }
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+.wider {
+  width: 150px;
+}
+
+ion-button {
+  --border-radius: 10px;
+}
+</style>
