@@ -74,6 +74,17 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /* overrides */
+  --vertical-card-height: 450px;
+  --vertical-card-width: 200px;
+
+  --vertical-card-img-height: 250px;
+  --border-radius: 30px;
+
+  /* progress bar */
+  --progress-bar-color: #9d2d2f;
+  --progress-bar-track-color: #f1f0ed;
 }
 
 @media (prefers-color-scheme: dark) {
