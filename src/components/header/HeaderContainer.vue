@@ -4,9 +4,8 @@
       <ion-grid fixed>
         <ion-row class="ion-align-items-center">
           <ion-col class="logo" size="4" size-md="2.5" size-lg="2">
-            <ion-button @click="() => router.push('/')" fill="clear">
-              <ion-img class="banner" :src="`./assets/icons/rapol-logo.svg`" alt=""></ion-img>
-            </ion-button>
+            <ion-img @click="() => router.push('/')" class="banner" :src="`./assets/icons/rapol-logo.svg`"
+              alt=""></ion-img>
           </ion-col>
           <ion-col class="ion-hide-lg-down">
             <ion-buttons class="nav-links">
