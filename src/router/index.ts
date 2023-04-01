@@ -8,6 +8,22 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/LandingPage.vue')
   },
   {
+    path: '/login',
+    name: 'login',
+    props: {
+      title: 'Welcome back!',
+    },
+    component: () => import('@/views/LoginPage.vue')
+  },
+  // {
+  //   path: '/signup',
+  //   name: 'signup',
+  //   props: {
+  //     title: 'Register',
+  //   },
+  //   component: () => import('@/views/RegisterPage.vue')
+  // },
+  {
     path: '/privacy-policy',
     name: 'privacy policy',
     props: {
