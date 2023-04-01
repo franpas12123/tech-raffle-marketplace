@@ -1,8 +1,8 @@
 <template>
-  <ion-row>
+  <ion-row class="first-banner">
     <ion-col>
       <div class="img-container">
-        <ion-img class="banner" :src="`${assetFolderTest}/idealz-landing-banner-top-wide.jpeg`" alt=""></ion-img>
+        <ion-img class="banner-top" :src="`${assetFolderTest}/idealz-landing-banner-top-wide.jpeg`" alt=""></ion-img>
         <ion-row class="banner-text-container ion-align-items-center">
           <ion-col>
             <h2 class="banner-text-title"><i>WIN</i></h2>
@@ -17,7 +17,7 @@
       </div>
     </ion-col>
   </ion-row>
-  <ion-row>
+  <ion-row class="second-banner">
     <ion-col>
       <a :href="topBannerMiniLeftURL">
         <ion-img class="banner" :src="`${assetFolderTest}/idealz-landing-banner-top-mini.png`" alt=""></ion-img>
@@ -51,6 +51,21 @@ $bannerColor: #992d2e;
 
 ion-img::part(image) {
   border-radius: 20px;
+}
+
+.second-banner {
+  margin-top: 10px;
+}
+
+// .second-banner {
+//   margin-top: 25px;
+// }
+
+.banner-top {
+  // width: 100%;
+  height: 300px;
+  object-fit: cover;
+  margin-top: 25px;
 }
 
 .banner-text-container {
