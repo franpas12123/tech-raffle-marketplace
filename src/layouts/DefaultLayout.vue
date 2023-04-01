@@ -2,7 +2,11 @@
   <ion-app ref="app">
     <ion-content color="dark">
       <HeaderContainer ref="header" />
-      <ion-grid :style="{ minHeight: appHeight - headerHeight - footerHeight + 'px' }" fixed>
+      <ion-grid :style="{
+        minHeight: appHeight - headerHeight - footerHeight + 'px',
+        paddingTop: paddingTop + 'px',
+        paddingBottom: paddingBottom + 'px'
+      }" :class="{ 'ion-text-center': centerContent }" fixed>
         <slot name="content">Fallback</slot>
       </ion-grid>
       <FooterContainer ref="footer" />
@@ -23,6 +27,21 @@ const footer = ref(null)
 const appHeight = useElementSize(app).height
 const headerHeight = useElementSize(header).height
 const footerHeight = useElementSize(footer).height
+
+defineProps({
+  paddingTop: {
+    type: Number,
+    default: 0
+  },
+  paddingBottom: {
+    type: Number,
+    default: 0
+  },
+  centerContent: {
+    type: Boolean,
+    default: false
+  }
+})
 
 // compute dynamic grid min height
 // const gridHeight = appHeight.value - headerHeight.value - footerHeight.value

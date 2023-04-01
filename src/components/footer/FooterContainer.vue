@@ -2,8 +2,8 @@
   <ion-footer>
     <ion-toolbar>
       <ion-grid fixed>
-        <ion-row>
-          <ion-col size="3">
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="6" size-md="3">
             <ion-row class="ion-text-center">
               <ion-col>
                 <ion-title>
@@ -17,9 +17,9 @@
               </ion-col>
             </ion-row>
           </ion-col>
-          <ion-col class="middle-column">
+          <ion-col size="12" size-lg="6" class="middle-column">
             <ion-row class="ion-justify-content-start">
-              <ion-col v-for="footerLink of footerLinksCenter" :key="footerLink.title">
+              <ion-col size="6" size-lg="4" v-for="footerLink of footerLinksCenter" :key="footerLink.title">
                 <ion-row>
                   <h5>{{ footerLink.title }}</h5>
                 </ion-row>
@@ -29,7 +29,7 @@
               </ion-col>
             </ion-row>
           </ion-col>
-          <ion-col size="3">
+          <ion-col>
             <ion-row class="ion-justify-content-start ion-margin-top">
               <div class="payment-icons-container">
                 <span class="link">We accept</span>
