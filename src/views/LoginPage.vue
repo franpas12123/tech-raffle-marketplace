@@ -13,7 +13,7 @@
 
         <ion-row class="ion-align-items-center ion-margin-top">
           <ion-col size="6" size-lg="3">
-            <ion-checkbox color="light" label-placement="end">Remember me</ion-checkbox>
+            <ion-checkbox label-placement="end">Remember me</ion-checkbox>
           </ion-col>
           <ion-col size="6" size-lg="3" class="ion-text-end">
             <router-link to="forgot-password">
@@ -24,7 +24,7 @@
 
         <ion-row class="ion-margin-top">
           <ion-col size="12" size-lg="6">
-            <ion-button class="login-button" color="light" expand="full">Login</ion-button>
+            <ion-button class="login-button" color="light" expand="block">Login</ion-button>
           </ion-col>
         </ion-row>
 
@@ -60,7 +60,7 @@
 <script setup lang="ts">
 import DefaultLayout from '@/layouts/DefaultLayout.vue';
 import { IonRow, IonCol, IonInput, IonButton, IonCheckbox } from '@ionic/vue';
-import { reactive } from 'vue';
+import { reactive, defineProps } from 'vue';
 
 defineProps({
   title: {
@@ -100,16 +100,6 @@ const socialSigninClick = (type: string) => {
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 25px;
-}
-
-ion-checkbox {
-  --size: 32px;
-  --checkbox-background: transparent;
-}
-
-ion-checkbox::part(container) {
-  border-radius: 6px;
-  border: 2px solid #ababaa;
 }
 
 ion-row {

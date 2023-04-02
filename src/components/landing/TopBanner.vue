@@ -4,7 +4,7 @@
       <div class="img-container">
         <ion-img class="banner-top" :src="`${assetFolderTest}/idealz-landing-banner-top-wide.jpeg`" alt=""></ion-img>
         <ion-row class="banner-text-container ion-align-items-center">
-          <ion-col>
+          <ion-col offset="5" offset-sm="6">
             <h2 class="banner-text-title"><i>WIN</i></h2>
             <h3 class="banner-text-subtitle">Toyota Fortuner 2023</h3>
             <p class="banner-text-info">Buy a out <b>Toro Hoodie</b> and make it yours!</p>
@@ -18,7 +18,7 @@
     </ion-col>
   </ion-row>
   <ion-row class="second-banner">
-    <ion-col>
+    <ion-col size="12" size-md="6">
       <a :href="topBannerMiniLeftURL">
         <ion-img class="banner" :src="`${assetFolderTest}/idealz-landing-banner-top-mini.png`" alt=""></ion-img>
       </a>
@@ -70,11 +70,13 @@ ion-img::part(image) {
 
 .banner-text-container {
   position: absolute;
-  width: 50%;
+  // width: 60%;
   height: 100%;
+  width: 100%;
   top: 0;
   right: 0;
   color: white;
+
 
   .banner-text-title {
     margin: 0;
