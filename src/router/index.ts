@@ -15,14 +15,14 @@ const routes: Array<RouteRecordRaw> = [
     },
     component: () => import('@/views/LoginPage.vue')
   },
-  // {
-  //   path: '/signup',
-  //   name: 'signup',
-  //   props: {
-  //     title: 'Register',
-  //   },
-  //   component: () => import('@/views/RegisterPage.vue')
-  // },
+  {
+    path: '/signup',
+    name: 'signup',
+    props: {
+      title: 'Register',
+    },
+    component: () => import('@/views/RegisterPage.vue')
+  },
   {
     path: '/privacy-policy',
     name: 'privacy policy',
