@@ -1,3 +1,6 @@
+$box-shadow-color: #cececd;
+$border-radiuss: 50px;
+
 @font-face {
   font-family: 'Montserrat';
   src: local("Montserrat"),
@@ -13,4 +16,27 @@
   }
 }
 
-$box-shadow-color: #cececd
+ion-progress-bar {
+  --progress-background: var(--progress-bar-color);
+  --background: var(--progress-bar-track-color);
+  border-radius: 10px;
+  height: 5px;
+
+}
+
+ion-checkbox {
+  --size: 18px;
+  --checkbox-background: transparent;
+  --checkbox-background-checked: transparent;
+}
+
+ion-checkbox::part(container) {
+  border-radius: 3px;
+  border: 1px solid #ababaa;
+}
+
+
+// ion-button {
+//   --background: #23242f !important;
+//   --border-radius: $border-radius !important;
+// }
