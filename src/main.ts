@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router';
+// import store from './store';
 
 import { IonicVue } from '@ionic/vue';
 
@@ -26,10 +27,16 @@ import './theme/variables.css';
 /* SASS stuff */
 import './assets/styles/main.scss';
 
+// import function to register Swiper custom elements
+import { register } from 'swiper/element/bundle';
+
 const app = createApp(App)
   .use(IonicVue)
+  // .use(store)
   .use(router);
   
 router.isReady().then(() => {
   app.mount('#app');
+  // register Swiper custom elements
+  register();
 });

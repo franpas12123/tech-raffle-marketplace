@@ -3,10 +3,11 @@
     <template v-slot:content>
       <ion-grid fixed class="ion-margin-top ion-margin-bottom">
         <ion-row>
-          <ion-col size="12" size-md="5" size-lg="4">
+          <ion-col size="12" size-md="5" size-lg="4" class="ion-margin-right">
             <!-- User menu -->
             <UserMenu></UserMenu>
           </ion-col>
+          <ion-col size="0.25"></ion-col>
           <ion-col>
             <!-- Current menu view -->
             <component v-bind:is="userMenuComponents[componentName]" />
