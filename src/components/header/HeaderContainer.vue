@@ -77,7 +77,7 @@ const cartItemsCount = ref(0)
 ion-button {
   --padding-start: 12px;
   --padding-end: 12px;
-  --background: #23242f !important;
+  --background: #263642 !important;
   --border-radius: 30px !important;
   --color: #fff;
 
