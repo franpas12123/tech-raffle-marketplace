@@ -5,11 +5,13 @@
       <TopBanner class="ion-margin-top"></TopBanner>
 
       <div class="closing-soon">
-        <!-- <h1 class="ion-text-center ion-text-uppercase">
+        <h1 class="ion-text-center ion-text-uppercase">
           <b>closing soon</b>
-        </h1> -->
-        <!-- <SwiperSlide></SwiperSlide> -->
+        </h1>
+        <SwiperSlide></SwiperSlide>
       </div>
+
+      <!-- <VerticalProductLayout></VerticalProductLayout> -->
     </template>
   </Layout>
 </template>
@@ -17,6 +19,7 @@
 <script setup lang="ts">
 import { IonImg } from '@ionic/vue';
 import Layout from '@/layouts/DefaultLayout.vue';
+import VerticalProductLayout from '@/layouts/products/VerticalProductLayout.vue';
 
 import TopBanner from '@/components/landing/TopBanner.vue';
 import SwiperSlide from '@/components/landing/SwiperSlide.vue';
