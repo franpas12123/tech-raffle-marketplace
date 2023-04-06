@@ -1,27 +1,44 @@
 <template>
   <ion-card color="dark" button>
-    <img class="img" alt="Silhouette of mountains" src="/assets/test/money.png" />
+    <img class="img" alt="product"
+      :src="layoutType === 'our products' ? './assets/test/hoodie.png' : product.productImgSrc ? product.productImgSrc : './assets/test/money.png'" />
     <ion-card-header>
       <ion-card-title class="title">
         <slot name="title">
-          <p :class="{ 'ion-text-center': alignment === 'center', 'ion-text-left': alignment === 'left' }">
-            {{ title }}</p>
+          <p v-if="layoutType === 'our products'"
+            :class="config.showAddToCartButton ? 'extended-card ion-text-left' : 'ion-text-center'">
+            Hoodie
+          </p>
+          <p v-else :class="config.showAddToCartButton ? 'extended-card ion-text-left' : 'ion-text-center'">
+            {{ product.title }}
+          </p>
         </slot>
       </ion-card-title>
-      <!-- <ion-card-subtitle>
-        <slot name="subtitle" class="subtitle">
-          subtitle
-        </slot>
-      </ion-card-subtitle> -->
     </ion-card-header>
 
-    <ion-card-content>
-      <p class="content">Buy a Rosso set and make it yours!</p>
-      <p v-if="showPrice" class="price"><b>{{ computedPrice }}</b></p>
+    <ion-card-content :class="config.showAddToCartButton ? 'extended-card ion-text-left' : 'ion-text-center'">
+      <p v-if="config.showDetails" class="content">
+        {{ product.details }}
+      </p>
+      <p v-if="config.showPrice" :class="{
+        'ion-text-center': !config.showAddToCartButton,
+        'color-highlight': config.colorHighlight
+      }" class="price">
+        <b>{{ computedPrice }}</b>
+      </p>
+
+      <div v-if="layoutType === 'winners'" class="ticket-details ion-margin-top">
+        <p>
+          <b>Ticket no: </b>NL-0000-0000-0
+        </p>
+        <p>
+          <b>Announced on: </b>12:10 31 Mar 2023
+        </p>
+      </div>
 
       <!-- <ion-row>
         <ion-col> -->
-      <div class="progress-container" v-if="withProgressBar">
+      <div class="progress-container" v-if="config.showProgressContainer">
         <ion-progress-bar :value="progress"></ion-progress-bar>
         <p class="ion-text-center">{{ progress * progressTotal }} sold</p>
       </div>
@@ -33,9 +50,8 @@
       </ion-row>
     </ion-card-content>
 
-    <!-- <ion-button expand="full" color="light">Cart</ion-button> -->
-    <base-button class="add-to-cart" text="Add to cart" :expand="true" :smaller-text="true" icon="cart-transparent.svg"
-      @click="addToCart"></base-button>
+    <base-button v-if="config.showAddToCartButton" class="add-to-cart" text="Add to cart" :expand="true"
+      :smaller-text="true" icon="cart-transparent.svg" @click="addToCart"></base-button>
   </ion-card>
 </template>
 
@@ -47,9 +63,13 @@ import { cartOutline } from 'ionicons/icons';
 import BaseButton from '@/components/base/BaseButton.vue'
 
 const props = defineProps({
-  title: {
+  product: {
+    type: Object,
+    required: true
+  },
+  layoutType: {
     type: String,
-    default: 'WIN: ₱100000'
+    default: ''
   },
   withProgressBar: {
     type: Boolean,
@@ -67,23 +87,23 @@ const props = defineProps({
     type: String,
     default: 'left'
   },
-  showPrice: {
-    type: Boolean,
-    default: true
-  },
-  price: {
-    type: Number,
-    default: 50
-  }
 })
 
 const computedPrice = computed(() => {
-  return `₱${props.price}`;
+  return `₱${props.product.price}`;
 })
 
 const progress = ref(props.progress / props.progressTotal);
 
 const addToCart = () => progress.value += (1 / props.progressTotal)
+
+const config = {
+  showProgressContainer: props.layoutType === 'closing soon',
+  showAddToCartButton: props.layoutType === 'closing soon',
+  showPrice: props.layoutType === 'closing soon' || props.layoutType === 'our products',
+  showDetails: props.layoutType !== 'our products',
+  colorHighlight: props.layoutType === 'our products'
+}
 </script>
 
 <style lang="scss" scoped>
@@ -91,16 +111,22 @@ $button-height: 45px;
 
 ion-card {
   border-radius: var(--border-radius);
-  width: var(--vertical-card-width);
+  min-width: var(--vertical-card-width);
+  // min-height: var(--vertical-card-height);
+  margin-left: 22px;
+  margin-right: 22px;
+  // background-color: white;
+  box-shadow: var(--box-shadow);
 
-  ion-card-content {
+  .extended-card {
     padding-bottom: $button-height;
   }
 
   .img {
-    max-height: var(--vertical-card-img-height);
+    height: var(--vertical-card-img-height);
     width: 100%;
-    object-fit: cover;
+    // object-fit: contain;
+    // background-color: #13212d;
   }
 }
 
@@ -130,6 +156,8 @@ ion-button {
 }
 
 .title {
+  margin-top: 5px;
+
   p {
     font-size: 16px;
     font-weight: bold;
@@ -139,10 +167,12 @@ ion-button {
 }
 
 .content {
-  font-size: 12px !important;
   margin: 0 !important;
   padding: 0 !important;
+  font-size: 12px !important;
   font-weight: 400 !important;
+  height: 36px;
+  overflow: hidden;
 }
 
 .progress-container {
@@ -152,6 +182,17 @@ ion-button {
     font-size: 10px;
     font-weight: 400;
     margin-top: 5px;
+  }
+}
+
+.color-highlight {
+  color: var(--highlight-color);
+}
+
+.ticket-details {
+  p {
+    font-size: 10px;
+    line-height: 1;
   }
 }
 </style>
