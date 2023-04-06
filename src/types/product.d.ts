@@ -9,3 +9,5 @@ declare interface Winners extends Product {
     ticketNumber: string,
     announcedOn: Date,
 }
+
+export { Product, Winners };
