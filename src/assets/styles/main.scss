@@ -1,4 +1,3 @@
-$box-shadow-color: #cececd;
 $border-radiuss: 50px;
 
 @font-face {
@@ -35,6 +34,12 @@ ion-checkbox::part(container) {
   border: 1px solid #ababaa;
 }
 
+/* grid overrides */
+ion-grid {
+  --ion-grid-width-xl: 1250px;
+  // --ion-grid-width-lg: 1250px;
+  // --ion-grid-width-md: 1250px;
+}
 
 // ion-button {
 //   --background: #23242f !important;

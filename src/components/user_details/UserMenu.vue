@@ -94,11 +94,9 @@ const userMenu: Array<UserMenu> = [
 </script>
 
 <style lang="scss" scoped>
-$box-shadow-color: #cececd;
-
 ion-card {
   border-radius: 30px;
-  box-shadow: 3px 3px 5px $box-shadow-color;
+  box-shadow: var(--box-shadow-color);
 }
 
 ion-item {

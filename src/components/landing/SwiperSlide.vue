@@ -1,80 +1,28 @@
-<!-- <template>
-  <swiper>
-    <swiper-slide>Slide 1</swiper-slide>
-    <swiper-slide>Slide 2</swiper-slide>
-    <swiper-slide>Slide 3</swiper-slide>
-  </swiper>
-</template>
-
-<script setup lang="ts">
-import { Autoplay, Keyboard, Pagination, Scrollbar, Zoom } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import { IonContent, IonPage, IonicSlides } from '@ionic/vue';
-
-import 'swiper/css';
-import 'swiper/css/autoplay';
-import 'swiper/css/keyboard';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-import 'swiper/css/zoom';
-import '@ionic/vue/css/ionic-swiper.css';
-
-</script>
-
-<style scoped></style> -->
-
 <template>
-  <div class="swiper-container">
-    <swiper-container ref="swiperContainerRef" :spaceBetween="0" :slides-per-view="slidesPerView" :loop="true" :autoplay="{
+  <div :class="layout !== 'horizontal' ? 'swiper-container-smaller' : 'swiper-container'">
+    <swiper-container ref="swiperContainerRef" :slides-per-view="computedSlidesPerView" :loop="true" :autoplay="{
       // delay: 2500,
       // disableOnInteraction: false,
     }" :modules="modules" class="mySwiper">
-      <swiper-slide>
-        <VerticalProductLayout></VerticalProductLayout>
+      <swiper-slide v-for="(product, index) in products" :key="index">
+        <VLayout v-if="layout !== 'horizontal'" :product="product" :layoutType="props.layout"></VLayout>
+        <HLayout v-else :product="product"></HLayout>
       </swiper-slide>
-      <swiper-slide>
-        <VerticalProductLayout :title="2"></VerticalProductLayout>
-      </swiper-slide>
-      <swiper-slide>
-        <VerticalProductLayout></VerticalProductLayout>
-      </swiper-slide>
-    <swiper-slide>
-      <VerticalProductLayout></VerticalProductLayout>
-    </swiper-slide>
-    <swiper-slide>
-      <VerticalProductLayout></VerticalProductLayout>
-    </swiper-slide>
-    <swiper-slide>
-      <VerticalProductLayout></VerticalProductLayout>
-      </swiper-slide>
-      <swiper-slide>
-        <VerticalProductLayout></VerticalProductLayout>
-      </swiper-slide>
-      <swiper-slide>
-        <VerticalProductLayout></VerticalProductLayout>
-      </swiper-slide>
-      <swiper-slide>
-        <VerticalProductLayout></VerticalProductLayout>
-      </swiper-slide>
-      <swiper-slide>
-        <VerticalProductLayout></VerticalProductLayout>
-      </swiper-slide>
-
     </swiper-container>
 
     <!-- <div class="custom-control-container" ref="customControlContainer"
-              :style="{ marginTop: `-${(swiperContainerHeight + customControlContainerHeight) / 2}px` }">
-              <ion-button class="prev">
-                left
-              </ion-button>
-              <ion-button class="next">
-                right
-              </ion-button>
-            </div> -->
+        :style="{ marginTop: `-${(swiperContainerHeight + customControlContainerHeight) / 2}px` }">
+        <ion-button class="prev">
+          left
+        </ion-button>
+        <ion-button class="next">
+          right
+        </ion-button>
+      </div> -->
   </div>
 </template>
-<script setup>
-import { ref, onMounted, nextTick } from 'vue';
+<script setup lang="ts">
+import { ref, onMounted, nextTick, computed } from 'vue';
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
@@ -93,45 +41,33 @@ import { IonButton } from '@ionic/vue'
 
 import { useElementSize } from '@vueuse/core'
 
-import VerticalProductLayout from '@/layouts/products/VerticalProductLayout.vue';
+import VLayout from '@/layouts/products/VerticalProductLayout.vue';
+import HLayout from '@/layouts/products/HorizontalProductLayout.vue';
 
-
-defineProps({
+const props = defineProps({
   slidesPerView: {
     type: Number,
     default: 4
+  },
+  layout: {
+    type: String,
+    default: ''
+  },
+  products: {
+    type: Object,
+    required: true
   }
 })
 
-// const progressCircle = ref(null);
-// const progressContent = ref(null);
-// const onAutoplayTimeLeft = (s, time, progress) => {
-//   progressCircle.value.style.setProperty('--progress', 1 - progress);
-//   progressContent.value.textContent = `${Math.ceil(time / 1000)}s`;
-// };
-// const modules = [Autoplay, Pagination, Navigation]
+const computedSlidesPerView = computed(() => {
+  if (props.slidesPerView > props.products.length) {
+    return props.products.length
+  } else {
+    return props.slidesPerView
+  }
+})
+
 const modules = [Pagination, Navigation]
-// export default {
-//   components: {
-//     Swiper,
-//     SwiperSlide,
-//     VerticalProductLayout
-//   },
-//   setup() {
-//     const progressCircle = ref(null);
-//     const progressContent = ref(null);
-//     const onAutoplayTimeLeft = (s, time, progress) => {
-//       progressCircle.value.style.setProperty('--progress', 1 - progress);
-//       progressContent.value.textContent = `${Math.ceil(time / 1000)}s`;
-//     };
-//     return {
-//       onAutoplayTimeLeft,
-//       progressCircle,
-//       progressContent,
-//       modules: [Autoplay, Pagination, Navigation],
-//     };
-//   },
-// };
 
 const swiperContainerRef = ref(null)
 const swiperContainerHeight = useElementSize(swiperContainerRef).height
@@ -162,6 +98,8 @@ onMounted(() => {
 nextTick(() => {
   // console.log('height', swiperContainerHeight.value)
 })
+
+// const vLayoutParams = 
 </script>
 
 <style lang="scss" >
@@ -218,10 +156,21 @@ nextTick(() => {
   transform: rotate(-90deg);
 } */
 
-swiper-container {
+.swiper-container {
   width: 90%;
   /* margin-left: 10px;
   margin-right: 10px; */
+}
+
+.swiper-container-smaller {
+  width: 85%;
+  /* margin-left: 10px;
+  margin-right: 10px; */
+}
+
+.swiper-container,
+.swiper-container-smaller {
+  margin: auto;
 }
 
 .swiper-slide {
