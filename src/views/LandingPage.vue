@@ -43,54 +43,55 @@ const swiperContents = [
   }
 ]
 
+const productPrizesImgSrc = './assets/prizes/'
 
 // products
 const products: Array<Product> = [
   {
     title: 'Win ₱10,000',
-    productImgSrc: './assets/test/money.png',
+    productImgSrc: `${productPrizesImgSrc}/money.jpg`,
     details: '',
     price: 50
   },
   {
     title: 'Win ₱50,000',
-    productImgSrc: './assets/test/money.png',
+    productImgSrc: `${productPrizesImgSrc}/money.jpg`,
     details: '',
     price: 150
   },
   {
     title: 'Win ₱20,000',
-    productImgSrc: './assets/test/money.png',
+    productImgSrc: `${productPrizesImgSrc}/money.jpg`,
     details: '',
     price: 100
   },
   {
-    title: 'WIN: iPhone 14 Pro',
-    productImgSrc: './assets/test/iphone-14-pro.png',
+    title: 'WIN: iPhone 14',
+    productImgSrc: `${productPrizesImgSrc}/iphone.jpg`,
     details: '',
-    price: 150
-  },
-  {
-    title: 'WIN: MacBook Air',
-    productImgSrc: './assets/test/mac-book-pro.jpeg',
-    details: '',
-    price: 250
+    price: 125
   },
   {
     title: 'WIN: iPhone 14 Pro',
-    productImgSrc: './assets/test/iphone-14-pro.png',
+    productImgSrc: `${productPrizesImgSrc}/iphone.jpg`,
     details: '',
     price: 150
-  },
-  {
-    title: 'WIN: MacBook Air',
-    productImgSrc: './assets/test/mac-book-pro.jpeg',
-    details: '',
-    price: 250
   },
   {
     title: 'WIN: MacBook Pro',
-    productImgSrc: './assets/test/mac-book-pro.jpeg',
+    productImgSrc: `${productPrizesImgSrc}/laptop.jpg`,
+    details: '',
+    price: 250
+  },
+  {
+    title: 'WIN: Motor',
+    productImgSrc: `${productPrizesImgSrc}/motor.jpg`,
+    details: '',
+    price: 250
+  },
+  {
+    title: 'WIN: Bugatti',
+    productImgSrc: `${productPrizesImgSrc}/bugatti.jpg`,
     details: '',
     price: 250
   },
