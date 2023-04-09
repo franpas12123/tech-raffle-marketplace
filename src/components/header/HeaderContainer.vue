@@ -57,7 +57,7 @@
 </template>
 
 <script setup lang="ts">
-import { IonHeader, IonToolbar, IonIcon, IonButton, IonButtons, IonGrid } from '@ionic/vue';
+import { IonHeader, IonToolbar, IonIcon, IonButton, IonButtons, IonGrid, IonImg, IonRow, IonCol } from '@ionic/vue';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
