@@ -115,7 +115,7 @@ ion-card {
   // min-height: var(--vertical-card-height);
   margin-left: 22px;
   margin-right: 22px;
-  // background-color: white;
+  background-color: white;
   box-shadow: var(--box-shadow);
 
   .extended-card {
