@@ -76,7 +76,7 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-tint: #f5f6f9;
 
   /* overrides */
-  --vertical-card-height: 300px;
+  --vertical-card-height: 200px;
   --vertical-card-width: 200px;
 
   --vertical-card-img-height: 250px;
