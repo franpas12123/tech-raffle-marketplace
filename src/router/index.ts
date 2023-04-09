@@ -67,8 +67,31 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/user/:id',
     name: 'userDetails',
-    component: () => import('@/layouts/UserDetailsLayout.vue'),
+    props: {
+      userType: 'user',
+    },
+    component: () => import('@/layouts/DashboardLayout.vue'),
     children: [
+      {
+        name: 'activeTickets',
+        path: 'active-tickets',
+        component: () => import('@/components/user_details/MyAddress.vue'),
+      },
+      {
+        name: 'myPurchases',
+        path: 'my-purchases',
+        component: () => import('@/components/user_details/MyAddress.vue'),
+      },
+      {
+        name: 'myAddress',
+        path: 'my-address',
+        component: () => import('@/components/user_details/MyAddress.vue'),
+      },
+      {
+        name: 'paymentOptions',
+        path: 'payment-options',
+        component: () => import('@/components/user_details/MyAddress.vue'),
+      },
       {
         name: 'changePassword',
         path: 'change-password',
@@ -77,11 +100,45 @@ const routes: Array<RouteRecordRaw> = [
         },
         component: () => import('@/components/user_details/ChangePassword.vue'),
       },
+    ]
+  },
+  // admin routes
+  {
+    path: '/admin/:id',
+    name: 'adminOverview',
+    props: {
+      userType: 'admin',
+    },
+    component: () => import('@/layouts/DashboardLayout.vue'),
+    children: [
       {
-        name: 'myAddress',
-        path: 'my-address',
+        name: 'adminProducts',
+        path: 'products',
         component: () => import('@/components/user_details/MyAddress.vue'),
-      }
+      },
+      {
+        name: 'adminCampaigns',
+        path: 'campaigns',
+        component: () => import('@/components/user_details/MyAddress.vue'),
+      },
+      {
+        name: 'adminOrders',
+        path: 'orders',
+        component: () => import('@/components/user_details/MyAddress.vue'),
+      },
+      {
+        name: 'adminUsers',
+        path: 'users',
+        component: () => import('@/components/user_details/MyAddress.vue'),
+      },
+      {
+        name: 'adminChangePassword',
+        path: 'change-password',
+        props: {
+          title: 'Change Password',
+        },
+        component: () => import('@/components/user_details/ChangePassword.vue'),
+      },
     ]
   },
   // will match everything and put it under `$route.params.pathMatch`

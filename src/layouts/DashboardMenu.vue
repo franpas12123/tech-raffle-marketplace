@@ -15,11 +15,11 @@
             </ion-row> -->
     <!-- </ion-thumbnail> -->
     <!-- <ion-label>{{ menu.title }}</ion-label> -->
-    <ion-button v-for="menu in userMenu" :key="menu.title + Math.random() * 999" class="" expand="full" color="dark"
-      :href="`/user/test/${menu.route}`">
+    <ion-button v-for="menu in menus" :key="menu.title + Math.random() * 999" class="" expand="full" color="dark"
+      :href="`/${userType}/test/${menu?.route}`">
       <div class="icon-start">
-        <ion-icon class="ion-margin-horizontal" slot="start" :icon="menu.icon"></ion-icon>
-        <span slot="start" class="ion-text-capitalize ion-text-start">{{ menu.title }}</span>
+        <ion-icon class="icon ion-margin-horizontal" color="light" slot="start" :src="menu?.icon"></ion-icon>
+        <span slot="start" class="ion-text-capitalize ion-text-start">{{ menu?.title }}</span>
       </div>
       <ion-icon class="icon-end ion-margin-right" slot="end" :icon="chevronForwardOutline"></ion-icon>
     </ion-button>
@@ -30,7 +30,21 @@
 
 <script setup lang="ts">
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonImg } from '@ionic/vue';
-import { personOutline, ticket, giftOutline, locationSharp, cardOutline, cogOutline, logOutOutline, chevronForwardOutline } from 'ionicons/icons';
+import userMenu from '@/utils/userMenu'
+import adminMenu from '@/utils/adminMenu'
+import { chevronForwardOutline } from 'ionicons/icons';
+import { computed } from 'vue';
+
+const props = defineProps({
+  userType: {
+    type: String,
+    default: 'user'
+  },
+  userId: {
+    type: String,
+    required: true
+  }
+})
 
 interface User {
   name: string,
@@ -42,55 +56,14 @@ const middleName = ''
 const lastName = 'Eisma'
 const email = 'testmail@gmail.com'
 
-
 const user: User = {
   name: `${firstName} ${middleName} ${lastName}`,
   email
 }
 
-interface UserMenu {
-  icon: string,
-  title: string,
-  route: string,
-}
-
-const userMenu: Array<UserMenu> = [
-  {
-    icon: personOutline,
-    title: 'Personal Details',
-    route: '',
-  },
-  {
-    icon: ticket,
-    title: 'Active Tickets',
-    route: 'active-tickets',
-  },
-  {
-    icon: giftOutline,
-    title: 'My Purchase',
-    route: 'my-purchase',
-  },
-  {
-    icon: locationSharp,
-    title: 'My Address',
-    route: 'my-address',
-  },
-  {
-    icon: cardOutline,
-    title: 'Payment Options',
-    route: 'payment-options',
-  },
-  {
-    icon: cogOutline,
-    title: 'Change Password',
-    route: 'change-password',
-  },
-  {
-    icon: logOutOutline,
-    title: 'Logout',
-    route: 'logout',
-  }
-] 
+const menus = computed(() => {
+  return props.userType === 'user' ? userMenu : adminMenu
+})
 </script>
 
 <style lang="scss" scoped>
@@ -138,5 +111,9 @@ ion-button {
 .icon-end {
   position: absolute;
   right: 0;
+}
+
+.icon {
+  // co
 }
 </style>

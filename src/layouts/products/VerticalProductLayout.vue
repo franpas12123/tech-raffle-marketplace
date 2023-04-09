@@ -187,6 +187,10 @@ ion-button {
 
 .color-highlight {
   color: var(--highlight-color);
+
+  b {
+    font-weight: 800;
+  }
 }
 
 .ticket-details {

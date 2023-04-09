@@ -76,7 +76,7 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-tint: #f5f6f9;
 
   /* overrides */
-  --vertical-card-height: 300px;
+  --vertical-card-height: 200px;
   --vertical-card-width: 200px;
 
   --vertical-card-img-height: 250px;
@@ -94,7 +94,7 @@ http://ionicframework.com/docs/theming/ */
   --box-shadow: 3px 3px 5px rgb(168, 168, 168);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) { */
   /*
    * Dark Colors
    * -------------------------------------------
@@ -254,4 +254,4 @@ http://ionicframework.com/docs/theming/ */
 
     --ion-card-background: #1e1e1e;
   }
-}
+/* } */
