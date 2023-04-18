@@ -3,14 +3,14 @@
     <template v-slot:content>
       <ion-grid fixed class="ion-margin-top ion-margin-bottom">
         <ion-row>
-          <ion-col size="12" size-md="5" size-lg="4" class="ion-margin-right">
+          <ion-col size="12" size-md="5" size-lg="4" size-xl="3" class="ion-margin-right ion-hide-lg-down">
             <!-- User menu -->
             <DashboardMenu user-id="test" :user-type="userType"></DashboardMenu>
           </ion-col>
-          <ion-col size="0.25"></ion-col>
+          <!-- <ion-col size="0.25" class="ion-hide-lg-down"></ion-col> -->
           <ion-col>
             <!-- Current menu view -->
-            <component v-bind:is="userMenuComponents[componentName]" />
+            <component v-bind:is="computedMenuComponents[componentName]" />
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -22,11 +22,13 @@
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import Layout from "./DefaultLayout.vue"
-import { computed } from 'vue';
+import { computed, defineAsyncComponent } from 'vue';
 
 import DashboardMenu from "@/layouts/DashboardMenu.vue"
-import changePassword from "@/components/user_details/ChangePassword.vue"
-import myAddress from "@/components/user_details/MyAddress.vue"
+// import changePassword from "@/components/user_details/ChangePassword.vue"
+// import myAddress from "@/components/user_details/MyAddress.vue"
+
+import productsIndex from '@/components/admin/products/ProductsIndex.vue'
 
 const props = defineProps({
   userType: {
@@ -46,8 +48,18 @@ const routeMatch = useRouter().getRoutes().filter(r => r.path.includes(substr) &
 
 const componentName = routeMatch.map(r => r.name)[0]
 const userMenuComponents = {
-  changePassword, myAddress
+  changePassword: defineAsyncComponent(() => import('@/components/user_details/ChangePassword.vue')),
+  myAddress: () => import('@/components/user_details/MyAddress.vue')
 }
+
+const adminMenuComponents = {
+  adminProducts: defineAsyncComponent(() => import('@/components/admin/products/ProductsIndex.vue')),
+}
+
+const computedMenuComponents = computed(() => {
+  console.log('computedMenuComponents', adminMenuComponents)
+  return props.userType === 'admin' ? adminMenuComponents : userMenuComponents
+})
 </script>
 
 <style scoped></style>
