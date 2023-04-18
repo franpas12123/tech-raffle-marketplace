@@ -1,0 +1,192 @@
+<template>
+  <div>
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col>
+          <h1 class="title">Products</h1>
+        </ion-col>
+        <ion-col size="3.5">
+          <ion-button expand="block">Add Product</ion-button>
+        </ion-col>
+        <ion-col size="3.5">
+          <ion-button expand="block">Export</ion-button>
+        </ion-col>
+      </ion-row>
+      <!-- 2nd row would be the search bar -->
+      <ion-row class="ion-align-items-center">
+        <ion-col>
+          <ion-searchbar class="" placeholder="Product Name"></ion-searchbar>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button expand="block">Search</ion-button>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button expand="block">Reset</ion-button>
+        </ion-col>
+      </ion-row>
+      <!-- 3rd row would be the table -->
+      <ion-row class="table">
+        <ion-col size="12">
+          <ion-grid>
+            <!-- table header -->
+            <ion-row class="table-header">
+              <ion-col size="3">Product Name</ion-col>
+              <ion-col>Stock</ion-col>
+              <ion-col>Price</ion-col>
+              <ion-col size="2">Categories</ion-col>
+              <ion-col>Date</ion-col>
+              <ion-col>Action</ion-col>
+            </ion-row>
+            <ion-row v-for="(product, index) in products" :key="index" :class="{ 'darker-bg': index % 2 === 0 }"
+              class="ion-align-items-center">
+              <ion-col size="3">{{ product.name }}</ion-col>
+              <ion-col>{{ product.stock }}</ion-col>
+              <ion-col>₱{{ product.price }}</ion-col>
+              <ion-col size="2">{{ product.categories[0] }}</ion-col>
+              <ion-col>{{ product.date }}</ion-col>
+              <ion-col size="2" class="actions-column">
+                <ion-button @click="viewProduct">
+                  <ion-icon :icon="searchOutline" aria-hidden="true"></ion-icon>
+                </ion-button>
+                <ion-button @click="editProduct">
+                  <ion-icon :icon="pencilOutline" aria-hidden="true"></ion-icon>
+                </ion-button>
+                <ion-button @click="deleteProduct(index)">
+                  <ion-icon :icon="trashOutline" aria-hidden="true"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { reactive } from 'vue';
+import { trashOutline, pencilOutline, searchOutline } from 'ionicons/icons';
+
+const products = reactive([
+  {
+    name: 'Product 1',
+    stock: 100,
+    price: 10,
+    categories: ['category 1', 'category 2'],
+    date: '2021-01-01'
+  },
+  {
+    name: 'Product 2',
+    stock: 200,
+    price: 20,
+    categories: ['category 1', 'category 2'],
+    date: '2021-01-01'
+  },
+  {
+    name: 'Product 3',
+    stock: 300,
+    price: 30,
+    categories: ['category 1', 'category 2'],
+    date: '2021-01-01'
+  },
+  {
+    name: 'Product 4',
+    stock: 400,
+    price: 40,
+    categories: ['category 1', 'category 2'],
+    date: '2021-01-01'
+  },
+  {
+    name: 'Product 5',
+    stock: 500,
+    price: 50,
+    categories: ['category 1', 'category 2'],
+    date: '2021-01-01'
+  },
+  {
+    name: 'Product 6',
+    stock: 600,
+    price: 60,
+    categories: ['category 1', 'category 2'],
+    date: '2021-01-01'
+  },
+  {
+    name: 'Product 7',
+    stock: 700,
+    price: 70,
+    categories: ['category 1', 'category 2'],
+    date: '2021-01-01'
+  },
+  {
+    name: 'Product 8',
+    stock: 800,
+    price: 80,
+    categories: ['category 1', 'category 2'],
+    date: '2021-01-01'
+  },
+  {
+    name: 'Product 9',
+    stock: 900,
+    price: 90,
+    categories: ['category 1', 'category 2'],
+    date: '2021-01-01'
+  },
+  {
+    name: 'Product 10',
+    stock: 1000,
+    price: 100,
+    categories: ['category 1', 'category 2'],
+    date: '2021-01-01'
+  },
+])
+
+const deleteProduct = (index: number) => {
+  products.splice(index, 1)
+  console.log('products', products)
+}
+
+const viewProduct = () => {
+  console.log('view product')
+}
+
+const editProduct = () => {
+  console.log('edit product')
+}
+</script>
+
+<style lang="scss" scoped>
+.table {
+  font-size: 13px;
+}
+
+.table-header {
+  font-size: larger;
+  background-color: var(--bg-color-primary);
+  color: white;
+}
+
+.darker-bg {
+  background-color: var(--bg-color-primary-light);
+}
+
+.title {
+  font-weight: 700;
+}
+
+ion-row {
+  padding: 8px 14px;
+}
+
+ion-button {
+  --background: var(--bg-color-primary) !important;
+  --color: white !important;
+}
+
+.actions-column ion-button {
+  font-size: 10px;
+}
+
+ion-searchbar {
+  color: black;
+}
+</style>

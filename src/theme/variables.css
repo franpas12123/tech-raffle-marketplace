@@ -4,7 +4,7 @@ http://ionicframework.com/docs/theming/ */
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #626982;
+  --ion-color-primary: #263642 !important;
   --ion-color-primary-rgb: 98, 105, 130;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
@@ -76,6 +76,9 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 
+  /* color theme */
+  --bg-color-primary: #263642 !important;
+  --bg-color-primary-light: rgb(38, 54, 66, 0.2) !important;
   /* overrides */
   --vertical-card-height: 200px;
   --vertical-card-width: 200px;

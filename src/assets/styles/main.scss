@@ -36,12 +36,22 @@ ion-checkbox::part(container) {
 
 /* grid overrides */
 ion-grid {
-  --ion-grid-width-xl: 1250px;
-  // --ion-grid-width-lg: 1250px;
-  // --ion-grid-width-md: 1250px;
+  --ion-grid-width-xl: 1800px;
+  --ion-grid-md: 98%;
+  --ion-grid-width: 100%
 }
 
-// ion-button {
+ion-button {
 //   --background: #23242f !important;
 //   --border-radius: $border-radius !important;
-// }
+  --background: white;
+// --ripple-color: black !important;
+
+  --background-hover: #3673da !important;
+  --background-hover-opacity: 0.3;
+  --color-hover: white !important;
+}
+
+ion-searchbar {
+  --border-radius: 30px !important;
+}

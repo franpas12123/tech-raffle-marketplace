@@ -112,9 +112,13 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/layouts/DashboardLayout.vue'),
     children: [
       {
+        path: '',
+        component: () => import('@/components/admin/products/ProductsIndex.vue'),
+      },
+      {
         name: 'adminProducts',
         path: 'products',
-        component: () => import('@/components/user_details/MyAddress.vue'),
+        component: () => import('@/components/admin/products/ProductsIndex.vue'),
       },
       {
         name: 'adminCampaigns',
@@ -132,7 +136,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/components/user_details/MyAddress.vue'),
       },
       {
-        name: 'adminChangePassword',
+        name: 'changePassword',
         path: 'change-password',
         props: {
           title: 'Change Password',

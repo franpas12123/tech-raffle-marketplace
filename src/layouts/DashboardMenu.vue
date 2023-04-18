@@ -15,7 +15,7 @@
             </ion-row> -->
     <!-- </ion-thumbnail> -->
     <!-- <ion-label>{{ menu.title }}</ion-label> -->
-    <ion-button v-for="menu in menus" :key="menu.title + Math.random() * 999" class="" expand="full" color="dark"
+    <ion-button v-for="menu in menus" :key="menu.title + Math.random() * 999" class="" expand="full"
       :href="`/${userType}/test/${menu?.route}`">
       <div class="icon-start">
         <ion-icon class="icon ion-margin-horizontal" color="light" slot="start" :src="menu?.icon"></ion-icon>
