@@ -66,6 +66,7 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
 import { trashOutline, pencilOutline, searchOutline } from 'ionicons/icons';
+import { IonSearchbar } from '@ionic/vue';
 
 const products = reactive([
   {
