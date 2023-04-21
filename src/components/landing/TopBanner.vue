@@ -2,7 +2,7 @@
   <ion-row class="first-banner">
     <ion-col>
       <div class="img-container">
-        <ion-img class="banner-top" :src="`${assetFolderTest}/idealz-landing-banner-top-wide.jpeg`" alt=""></ion-img>
+        <ion-img class="banner-top" :src="`${assetFolderTest}/main-image.jpg`" alt=""></ion-img>
         <ion-row class="banner-text-container ion-align-items-center">
           <ion-col offset="5" offset-sm="6">
             <h2 class="banner-text-title"><i>WIN</i></h2>
@@ -20,12 +20,12 @@
   <ion-row class="second-banner">
     <ion-col size="12" size-md="6">
       <a :href="topBannerMiniLeftURL">
-        <ion-img class="banner" :src="`${assetFolderTest}/idealz-landing-banner-top-mini.png`" alt=""></ion-img>
+        <ion-img class="banner" :src="`${assetFolderTest}/image-left.jpg`" alt=""></ion-img>
       </a>
     </ion-col>
     <ion-col>
       <a :href="topBannerMiniRightURL">
-        <ion-img class="banner" :src="`${assetFolderTest}/idealz-landing-banner-top-mini-right.png`" alt=""></ion-img>
+        <ion-img class="banner" :src="`${assetFolderTest}/image-right.jpg`" alt=""></ion-img>
       </a>
     </ion-col>
   </ion-row>
@@ -34,7 +34,7 @@
 <script setup lang="ts">
 import { IonImg, IonRow, IonCol, IonButton } from '@ionic/vue';
 import { useRoute } from 'vue-router'
-const assetFolderTest = './assets/test'
+const assetFolderTest = './assets/landingBanners'
 
 const route = useRoute()
 const onTopBannerClick = () => {
