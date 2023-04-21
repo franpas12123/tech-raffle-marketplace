@@ -110,7 +110,7 @@ const config = {
 $button-height: 45px;
 
 ion-card {
-  border-radius: var(--border-radius);
+  // border-radius: var(--border-radius);
   min-width: var(--vertical-card-width);
   width: 300px;
   // min-height: var(--vertical-card-height);
