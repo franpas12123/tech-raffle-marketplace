@@ -20,7 +20,6 @@ ion-progress-bar {
   --background: var(--progress-bar-track-color);
   border-radius: 10px;
   height: 5px;
-
 }
 
 ion-checkbox {
@@ -36,8 +35,9 @@ ion-checkbox::part(container) {
 
 /* grid overrides */
 ion-grid {
-  --ion-grid-width-xl: 1800px;
-  --ion-grid-md: 98%;
+  --ion-grid-width-xl: 1350px;
+  --ion-grid-width-lg: 85%;
+  --ion-grid-width-md: 90%;
   --ion-grid-width: 100%
 }
 

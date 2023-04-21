@@ -4,12 +4,16 @@
       <!-- Top Banner -->
       <TopBanner class="ion-margin-top"></TopBanner>
 
-      <div class="sections" v-for="(swiperContent, index) in swiperContents" :key="`swiper-contents-${index}`">
-        <h1 class="ion-text-center ion-text-uppercase">
-          <b>{{ swiperContent.title }}</b>
-        </h1>
-        <SwiperSlide :products="products" :layout="swiperContent.title"></SwiperSlide>
-      </div>
+      <LandingPageSections :title="swiperContent.title" v-for="(swiperContent, index) in swiperContents"
+        :key="`swiper-contents-${index}`" :enable-filters="swiperContent?.layout === 'horizontal'" :filters="filters">
+        <template v-slot:content>
+          <div v-if="swiperContent?.layout === 'horizontal'">
+            <HorizontalProductLayout class="horizontal-product-layout" v-for="(product, index) in products" :key="index"
+              :product="product" />
+          </div>
+          <SwiperSlide v-else :products="products" :layout="swiperContent.title"></SwiperSlide>
+        </template>
+      </LandingPageSections>
     </template>
   </Layout>
 </template>
@@ -24,6 +28,8 @@ import { faker } from '@faker-js/faker';
 import Layout from '@/layouts/DefaultLayout.vue';
 import TopBanner from '@/components/landing/TopBanner.vue';
 import SwiperSlide from '@/components/landing/SwiperSlide.vue';
+import LandingPageSections from '@/layouts/LandingPageSections.vue';
+import HorizontalProductLayout from '@/layouts/products/HorizontalProductLayout.vue';
 
 
 
@@ -48,19 +54,19 @@ const productPrizesImgSrc = './assets/prizes/'
 // products
 const products: Array<Product> = [
   {
-    title: 'Win ₱10,000',
+    title: 'Win ₱10,000 Cash',
     productImgSrc: `${productPrizesImgSrc}/money.jpg`,
     details: '',
     price: 50
   },
   {
-    title: 'Win ₱50,000',
+    title: 'Win ₱50,000 Cash',
     productImgSrc: `${productPrizesImgSrc}/money.jpg`,
     details: '',
     price: 150
   },
   {
-    title: 'Win ₱20,000',
+    title: 'Win ₱20,000 Cash',
     productImgSrc: `${productPrizesImgSrc}/money.jpg`,
     details: '',
     price: 100
@@ -101,12 +107,19 @@ products.forEach((product) => {
   product.details = faker.lorem.words(5);
 })
 
+const filters = [
+  'All',
+  'Tech',
+  'Cars',
+  'Others'
+]
+
 </script>
 
 <style lang="scss" scoped>
 .sections {
   min-height: 200px;
-  margin-top: 48px;
+  margin-top: 60px;
 
   h1 {
     margin-bottom: 16px;
@@ -119,5 +132,9 @@ products.forEach((product) => {
   &:last-child {
     margin-bottom: 48px;
   }
+}
+
+.horizontal-product-layout {
+  margin-bottom: 30px;
 }
 </style>

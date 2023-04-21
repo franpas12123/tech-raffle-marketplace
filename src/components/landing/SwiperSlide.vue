@@ -1,11 +1,9 @@
 <template>
   <div :class="layout !== 'horizontal' ? 'swiper-container-smaller' : 'swiper-container'">
-    <swiper-container ref="swiperContainerRef" :slides-per-view="computedSlidesPerView" :loop="true" :autoplay="{
-      // delay: 2500,
-      // disableOnInteraction: false,
-    }" :modules="modules" class="mySwiper">
+    <swiper-container ref="swiperContainerRef" :slides-per-view="computedSlidesPerView" :loop="true" :modules="modules"
+      class="mySwiper">
       <swiper-slide v-for="(product, index) in products" :key="index">
-        <VLayout v-if="layout !== 'horizontal'" :product="product" :layoutType="props.layout"></VLayout>
+        <VLayout v-if="verticalLayout" :product="product" :layoutType="props.layout"></VLayout>
         <HLayout v-else :product="product"></HLayout>
       </swiper-slide>
     </swiper-container>
@@ -47,7 +45,7 @@ import HLayout from '@/layouts/products/HorizontalProductLayout.vue';
 const props = defineProps({
   slidesPerView: {
     type: Number,
-    default: 4
+    default: 5
   },
   layout: {
     type: String,
@@ -58,6 +56,8 @@ const props = defineProps({
     required: true
   }
 })
+
+const verticalLayout = props.layout !== 'explore campaigns'
 
 const computedSlidesPerView = computed(() => {
   if (props.slidesPerView > props.products.length) {
@@ -157,7 +157,7 @@ nextTick(() => {
 } */
 
 .swiper-container {
-  width: 90%;
+  width: 95%;
   /* margin-left: 10px;
   margin-right: 10px; */
 }

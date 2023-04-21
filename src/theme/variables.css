@@ -82,8 +82,12 @@ http://ionicframework.com/docs/theming/ */
   /* overrides */
   --vertical-card-height: 200px;
   --vertical-card-width: 200px;
-
   --vertical-card-img-height: 250px;
+
+  --horizontal-card-height: 220px;
+  --horizontal-card-width: 200px;
+  --horizontal-card-img-height: 220px;
+
   --border-radius: 30px;
 
   /* progress bar */
@@ -96,6 +100,7 @@ http://ionicframework.com/docs/theming/ */
   --highlight-color: #9d2d2f;
   /* --box-shadow: 3px 3px 5px #cececd; */
   --box-shadow: 3px 3px 5px rgb(168, 168, 168);
+  --border-outline-color: #c6c5c5;
 }
 
 /* @media (prefers-color-scheme: dark) { */
