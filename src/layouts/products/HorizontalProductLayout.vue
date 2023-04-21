@@ -112,7 +112,7 @@ $button-height: 45px;
 ion-card {
   background-color: white;
   color: black;
-  border-radius: var(--border-radius);
+  // border-radius: var(--border-radius);
   max-height: var(--horizontal-card-height);
   min-width: var(--vertical-card-width);
 
