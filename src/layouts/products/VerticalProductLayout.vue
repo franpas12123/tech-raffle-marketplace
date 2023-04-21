@@ -21,9 +21,9 @@
         {{ product.details }}
       </p>
       <p v-if="config.showPrice" :class="{
-        'ion-text-center': !config.showAddToCartButton,
-        'color-highlight': config.colorHighlight
-      }" class="price">
+          'ion-text-center': !config.showAddToCartButton,
+          'color-highlight': config.colorHighlight
+        }" class="price">
         <b>{{ computedPrice }}</b>
       </p>
 
@@ -112,6 +112,7 @@ $button-height: 45px;
 ion-card {
   border-radius: var(--border-radius);
   min-width: var(--vertical-card-width);
+  width: 300px;
   // min-height: var(--vertical-card-height);
   margin-left: 22px;
   margin-right: 22px;
