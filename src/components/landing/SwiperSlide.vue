@@ -163,7 +163,7 @@ nextTick(() => {
 }
 
 .swiper-container-smaller {
-  width: 85%;
+  // width: 85%;
   /* margin-left: 10px;
   margin-right: 10px; */
 }
@@ -198,7 +198,7 @@ nextTick(() => {
 
 .swiper-button-next {
   /* padding-left: 20px; */
-  right: -20px;
+  // right: -20px;
 }
 
 // .swiper-slide-active {
