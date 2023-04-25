@@ -19,6 +19,16 @@
   </ion-row>
   <ion-row class="second-banner">
     <ion-col size="12" size-md="6">
+      <ion-row class="banner-text-container banner-left ion-padding ion-align-items-center">
+        <ion-col size="5" size-sm="6">
+          <h3 class="banner-text-subtitle">Get <b>₱50 free credits</b></h3>
+          <p class="banner-text-info">Create an account for the first time to receive ₱50 credits for free</p>
+          <ion-button class="ion-text-capitalize" :href="topBannerURL" @click="onTopBannerClick()" fill="clear"
+            text-capitalize="false">
+            <b>Sign up</b>
+          </ion-button>
+        </ion-col>
+      </ion-row>
       <a :href="topBannerMiniLeftURL">
         <ion-img class="banner" :src="`${assetFolderTest}/image-left.jpg`" alt=""></ion-img>
       </a>
@@ -101,7 +111,7 @@ ion-img::part(image) {
   .banner-text-info {
     margin: 0;
     padding: 0;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 15px;
   }
 
@@ -116,6 +126,36 @@ ion-img::part(image) {
 
     b {
       padding: 0 20px;
+    }
+  }
+}
+
+.banner-left {
+  padding: 32px;
+
+  // left: 0 !important;
+  // right: auto;
+  .banner-text-subtitle {
+    font-size: 1.3rem;
+
+    b {
+      font-size: 1.5rem;
+      color: var(--button-bg-color-primary);
+      font-weight: 800;
+    }
+  }
+
+  .banner-text-info {
+    line-height: 18px;
+  }
+
+  ion-button {
+    --background: var(--button-bg-color-primary) !important;
+    margin-top: 8px;
+
+    b {
+      font-size: 0.85rem;
+      font-weight: 800;
     }
   }
 }
