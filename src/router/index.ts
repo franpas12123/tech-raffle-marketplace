@@ -119,6 +119,35 @@ const routes: Array<RouteRecordRaw> = [
         name: 'adminProducts',
         path: 'products',
         component: () => import('@/components/admin/products/ProductsIndex.vue'),
+        children: [
+          {
+            name: 'addProducts',
+            path: 'add',
+            component: () => import('@/components/admin/products/AddEditProducts.vue'),
+          },
+          {
+            name: 'editProducts',
+            path: 'edit/:id',
+            component: () => import('@/components/admin/products/AddEditProducts.vue'),
+          }
+        ]
+      },
+      {
+        name: 'adminCategories',
+        path: 'categories',
+        component: () => import('@/components/admin/categories/CategoriesIndex.vue'),
+        children: [
+          {
+            name: 'addCategories',
+            path: 'add',
+            component: () => import('@/components/admin/categories/AddEditCategories.vue'),
+          },
+          {
+            name: 'editCategories',
+            path: 'edit/:id',
+            component: () => import('@/components/admin/categories/AddEditCategories.vue'),
+          }
+        ]
       },
       {
         name: 'adminCampaigns',

@@ -54,57 +54,73 @@ const productPrizesImgSrc = './assets/prizes/'
 // products
 const products: Array<Product> = [
   {
-    title: 'Win ₱10,000 Cash',
+    name: 'Win ₱10,000 Cash',
     productImgSrc: `${productPrizesImgSrc}/money.jpg`,
-    details: '',
-    price: 50
+    description: '',
+    price: 50,
+    stock: 1,
+    category: ''
   },
   {
-    title: 'Win ₱50,000 Cash',
+    name: 'Win ₱50,000 Cash',
     productImgSrc: `${productPrizesImgSrc}/money.jpg`,
-    details: '',
-    price: 150
+    description: '',
+    price: 150,
+    stock: 1,
+    category: null
   },
   {
-    title: 'Win ₱20,000 Cash',
+    name: 'Win ₱20,000 Cash',
     productImgSrc: `${productPrizesImgSrc}/money.jpg`,
-    details: '',
-    price: 100
+    description: '',
+    price: 100,
+    stock: 1,
+    category: null
   },
   {
-    title: 'WIN: iPhone 14',
+    name: 'WIN: iPhone 14',
     productImgSrc: `${productPrizesImgSrc}/iphone.jpg`,
-    details: '',
-    price: 125
+    description: '',
+    price: 125,
+    stock: 1,
+    category: null
   },
   {
-    title: 'WIN: iPhone 14 Pro',
+    name: 'WIN: iPhone 14 Pro',
     productImgSrc: `${productPrizesImgSrc}/iphone.jpg`,
-    details: '',
-    price: 150
+    description: '',
+    price: 150,
+    stock: 1,
+    category: null
   },
   {
-    title: 'WIN: MacBook Pro',
+    name: 'WIN: MacBook Pro',
     productImgSrc: `${productPrizesImgSrc}/laptop.jpg`,
-    details: '',
-    price: 250
+    description: '',
+    price: 250,
+    stock: 1,
+    category: null
   },
   {
-    title: 'WIN: Motor',
+    name: 'WIN: Motor',
     productImgSrc: `${productPrizesImgSrc}/motor.jpg`,
-    details: '',
-    price: 250
+    description: '',
+    price: 250,
+    stock: 1,
+    category: null
   },
   {
-    title: 'WIN: Bugatti',
+    name: 'WIN: Bugatti',
     productImgSrc: `${productPrizesImgSrc}/bugatti.jpg`,
-    details: '',
-    price: 250
+    description: '',
+    price: 250,
+    stock: 1,
+    category: null
   },
 ]
 
 products.forEach((product) => {
-  product.details = faker.lorem.words(5);
+  product.description = faker.lorem.words(5);
 })
 
 const filters = [
