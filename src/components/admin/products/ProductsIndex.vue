@@ -37,7 +37,7 @@
               <ion-col>Date</ion-col>
               <ion-col>Action</ion-col>
             </ion-row>
-            <ion-row v-for="(product, index) in state.products" :key="index" :class="{ 'darker-bg': index % 2 === 0 }"
+            <ion-row v-for="(product, index) in state.products" :key="index" :class="{ 'darker-bg': index % 2 !== 0 }"
               class="ion-align-items-center">
               <ion-col size="3">{{ product.name }}</ion-col>
               <ion-col>{{ product.stock }}</ion-col>
