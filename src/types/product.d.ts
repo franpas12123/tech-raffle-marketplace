@@ -1,13 +1,19 @@
 declare interface Product {
-  title: string;
-  productImgSrc: string;
-  details: string;
+  name: string;
+  productImgSrc?: string;
+  description: string;
   price: number;
+  stock: number;
+  category?: Category;
 }
 
 declare interface Winners extends Product {
-    ticketNumber: string,
-    announcedOn: Date,
+  ticketNumber: string,
+  announcedOn: Date,
 }
 
-export { Product, Winners };
+declare interface Category {
+  name: string;
+}
+
+export { Product, Winners, Category };
