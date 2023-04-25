@@ -31,7 +31,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { reactive, ref, onMounted, computed } from 'vue';
 import { trashOutline, pencilOutline, searchOutline, send } from 'ionicons/icons';
 import { IonSearchbar, IonInput, IonTextarea } from '@ionic/vue'
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 // ignore this for now
 import { supabase } from '@/lib/supabaseClient'
 import { Product } from '@/types/product';
@@ -39,6 +39,7 @@ import store from '@/store';
 
 
 const route = useRoute()
+const router = useRouter()
 
 const mode = route.name.includes('add') ? 'Add' : route.name.includes('edit') ? 'Edit' : ''
 const title = mode + ' Products'
@@ -164,6 +165,8 @@ const insertProduct = async (payload: Product) => {
   }
   // toast
   // store.state.toast('Product added successfully', 'success')
+  alert('product added successfully')
+  router.push({ name: 'adminProducts' })
   console.log('insert', data)
 }
 const updateProduct = async (payload: Product) => {
