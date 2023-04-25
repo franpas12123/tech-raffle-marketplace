@@ -9,7 +9,7 @@
           <ion-card-title class="title">
             <slot name="title">
               <p :class="{ 'ion-text-center': alignment === 'center', 'ion-text-left': alignment === 'left' }">
-                {{ product.title }}
+                {{ product.name }}
               </p>
             </slot>
           </ion-card-title>

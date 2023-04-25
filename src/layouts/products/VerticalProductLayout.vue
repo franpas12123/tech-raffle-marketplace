@@ -10,7 +10,7 @@
             Hoodie
           </p>
           <p v-else :class="config.showAddToCartButton ? 'extended-card ion-text-left' : 'ion-text-center'">
-            {{ product.title }}
+            {{ product.name }}
           </p>
         </slot>
       </ion-card-title>
@@ -18,7 +18,7 @@
 
     <ion-card-content :class="config.showAddToCartButton ? 'extended-card ion-text-left' : 'ion-text-center'">
       <p v-if="config.showDetails" class="content">
-        {{ product.details }}
+        {{ product.description }}
       </p>
       <p v-if="config.showPrice" :class="{
           'ion-text-center': !config.showAddToCartButton,
