@@ -4,7 +4,7 @@ declare interface Product {
   description: string;
   price: number;
   stock: number;
-  category?: Category;
+  category?: Category | null;
 }
 
 declare interface Winners extends Product {
