@@ -18,7 +18,17 @@
     </ion-col>
   </ion-row>
   <ion-row class="second-banner">
-    <ion-col size="12" size-md="6">
+    <ion-col size="12" size-lg="6">
+      <ion-row class="banner-text-container banner-left ion-padding ion-align-items-center">
+        <ion-col size="6" size-sm="7">
+          <h3 class="banner-text-subtitle">Get <b>₱50 free credits</b></h3>
+          <p class="banner-text-info">Create an account for the first time to receive ₱50 credits for free</p>
+          <ion-button class="ion-text-capitalize" :href="topBannerURL" @click="onTopBannerClick()" fill="clear"
+            text-capitalize="false">
+            <b>Sign up</b>
+          </ion-button>
+        </ion-col>
+      </ion-row>
       <a :href="topBannerMiniLeftURL">
         <ion-img class="banner" :src="`${assetFolderTest}/image-left.jpg`" alt=""></ion-img>
       </a>
@@ -27,6 +37,24 @@
       <a :href="topBannerMiniRightURL">
         <ion-img class="banner" :src="`${assetFolderTest}/image-right.jpg`" alt=""></ion-img>
       </a>
+      <ion-row class="banner-text-container banner-right ion-padding ion-align-items-center">
+        <ion-col size="6" size-sm="7">
+          <h3 class="banner-text-subtitle"><b>Join us on mobile</b></h3>
+          <p class="banner-text-info">Download our app to keep up to date with the latest news.</p>
+          <!-- <ion-button class="ion-text-capitalize" :href="topBannerURL" @click="onTopBannerClick()" fill="clear"
+            text-capitalize="false">
+            <b>Sign up</b>
+          </ion-button> -->
+          <ion-row class="ion-justify-content-start">
+            <ion-col size="4" size-md="5">
+              <ion-img class="store-icons" :src="`${assetFolder}/test/${storeImgSrc[0]}`" alt=""></ion-img>
+            </ion-col>
+            <ion-col size="4" size-md="5">
+              <ion-img class="store-icons" :src="`${assetFolder}/test/${storeImgSrc[1]}`" alt=""></ion-img>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
     </ion-col>
   </ion-row>
 </template>
@@ -41,6 +69,11 @@ const onTopBannerClick = () => {
   route
 }
 
+const assetFolder = './assets'
+const storeImgSrc: string[] = [
+  'download on the app store.png',
+  'download on the google store.png'
+]
 const topBannerURL = 'https://toyota.com.ph/fortuner'
 const topBannerMiniLeftURL = 'https://www.mbusa.com/en/vehicles/model/g-class/suv/g63w4'
 const topBannerMiniRightURL = '#'
@@ -101,7 +134,7 @@ ion-img::part(image) {
   .banner-text-info {
     margin: 0;
     padding: 0;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 15px;
   }
 
@@ -117,6 +150,73 @@ ion-img::part(image) {
     b {
       padding: 0 20px;
     }
+  }
+}
+
+.banner-left {
+  padding: 32px;
+
+  // left: 0 !important;
+  // right: auto;
+  .banner-text-subtitle {
+    font-size: 1.3rem;
+
+    b {
+      font-size: 1.5rem;
+      color: var(--button-bg-color-primary);
+      font-weight: 800;
+    }
+  }
+
+  .banner-text-info {
+    line-height: 18px;
+  }
+
+  ion-button {
+    --background: var(--button-bg-color-primary) !important;
+    margin-top: 8px;
+
+    b {
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+  }
+}
+
+.banner-right {
+  padding: 32px;
+
+  // left: 0 !important;
+  // right: auto;
+  .banner-text-subtitle {
+    font-size: 1.3rem;
+
+    b {
+      font-size: 1.5rem;
+      color: var(--bg-color-primary);
+      font-weight: 800;
+    }
+  }
+
+  .banner-text-info {
+    line-height: 18px;
+    color: var(--bg-color-primary);
+  }
+
+  ion-button {
+    --background: var(--button-bg-color-primary) !important;
+    margin-top: 8px;
+
+    b {
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+  }
+
+  .store-icons {
+    height: 50px;
+    width: 110px;
+    border-radius: 100%;
   }
 }
 </style>
