@@ -17,7 +17,7 @@
         </ion-col>
       </ion-row>
       <ion-row ref="row" class="ion-margin-left">
-        <ion-button color="light" type="submit" :disabled="false">
+        <ion-button type="submit" :disabled="false">
           <ion-icon slot="start" :icon="send"></ion-icon>
           {{ computedButtonName }}
         </ion-button>
