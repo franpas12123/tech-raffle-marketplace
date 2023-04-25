@@ -78,6 +78,7 @@ http://ionicframework.com/docs/theming/ */
 
   /* color theme */
   --bg-color-primary: #263642 !important;
+  --button-bg-color-primary: #3673da !important;
   --bg-color-primary-light: rgb(38, 54, 66, 0.2) !important;
   /* overrides */
   --vertical-card-height: 200px;
