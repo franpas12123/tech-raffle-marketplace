@@ -5,6 +5,7 @@
         <ion-row>
           <ion-col size="12" size-md="5" size-lg="4" size-xl="3" class="ion-margin-right ion-hide-lg-down">
             <!-- User menu -->
+            <!-- {{ componentName }} -->
             <DashboardMenu user-id="test" :user-type="userType"></DashboardMenu>
           </ion-col>
           <!-- <ion-col size="0.25" class="ion-hide-lg-down"></ion-col> -->
@@ -27,8 +28,6 @@ import { computed, defineAsyncComponent } from 'vue';
 import DashboardMenu from "@/layouts/DashboardMenu.vue"
 // import changePassword from "@/components/user_details/ChangePassword.vue"
 // import myAddress from "@/components/user_details/MyAddress.vue"
-
-import productsIndex from '@/components/admin/products/ProductsIndex.vue'
 
 const props = defineProps({
   userType: {
@@ -54,6 +53,10 @@ const userMenuComponents = {
 
 const adminMenuComponents = {
   adminProducts: defineAsyncComponent(() => import('@/components/admin/products/ProductsIndex.vue')),
+  editProducts: defineAsyncComponent(() => import('@/components/admin/products/AddEditProducts.vue')),
+  addProducts: defineAsyncComponent(() => import('@/components/admin/products/AddEditProducts.vue')),
+  adminCategories: defineAsyncComponent(() => import('@/components/admin/categories/CategoriesIndex.vue')),
+  addCategories: defineAsyncComponent(() => import('@/components/admin/categories/AddEditCategories.vue')),
 }
 
 const computedMenuComponents = computed(() => {
