@@ -5,19 +5,22 @@
     <ion-card-header>
       <ion-card-title class="title">
         <slot name="title">
-          <p v-if="layoutType === 'our products'"
+          <h5 v-if="layoutType === 'winners'" class="color-highlight title-text">Congratulations!</h5>
+          <p v-if="layoutType !== 'winners'"
             :class="config.showAddToCartButton ? 'extended-card ion-text-left' : 'ion-text-center'">
-            Hoodie
+            {{ layoutType === 'our products' ? 'Hoodie' : product.name }}
           </p>
-          <p v-else :class="config.showAddToCartButton ? 'extended-card ion-text-left' : 'ion-text-center'">
+          <!-- <div v-else-if="layoutType === 'winners'">
+          </div> -->
+          <!-- <p v-else :class="config.showAddToCartButton ? 'extended-card ion-text-left' : 'ion-text-center'">
             {{ product.name }}
-          </p>
+          </p> -->
         </slot>
       </ion-card-title>
     </ion-card-header>
 
     <ion-card-content :class="config.showAddToCartButton ? 'extended-card ion-text-left' : 'ion-text-center'">
-      <p v-if="config.showDetails" class="content">
+      <p v-if="config.showDetails && layoutType !== 'winners'" class="content">
         {{ product.description }}
       </p>
       <p v-if="config.showPrice" :class="{
@@ -27,8 +30,15 @@
         <b>{{ computedPrice }}</b>
       </p>
 
-      <div v-if="layoutType === 'winners'" class="ticket-details ion-margin-top">
-        <p>
+      <div v-if="layoutType === 'winners'" class="ticket-details">
+        <h5 class="winner-name">
+          <b>John Bartolome</b>
+        </h5>
+        <h5>
+          on winning <b>₱50,000 Cash</b>
+        </h5>
+        <br>
+        <p class="ion-margin-top">
           <b>Ticket no: </b>NL-0000-0000-0
         </p>
         <p>
@@ -199,5 +209,12 @@ ion-button {
     font-size: 10px;
     line-height: 1;
   }
+}
+
+.title-text {
+  // font-size: 16px;
+  font-weight: bold;
+  // margin: 0;
+  padding: 0;
 }
 </style>
