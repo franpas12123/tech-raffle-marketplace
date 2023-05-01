@@ -16,6 +16,14 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/LoginPage.vue')
   },
   {
+    path: '/admin-login',
+    name: 'adminLogin',
+    props: {
+      title: 'Welcome back!',
+    },
+    component: () => import('@/views/LoginPage.vue')
+  },
+  {
     path: '/signup',
     name: 'signup',
     props: {

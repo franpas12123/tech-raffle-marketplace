@@ -6,7 +6,8 @@
       <form @submit.prevent="onSubmit">
         <ion-row v-for="(c, i) in config" :key="i" class="ion-margin-top">
           <ion-col size="12" size-lg="6">
-            <ion-input :ref="c.name" v-model="c.vModel" :type="c?.showPass ? 'text' : 'password'" :label="c.placeholder"
+            <ion-input :ref="c.name" v-model="c.vModel"
+              :type="c.name === 'email' ? 'text' : c?.showPass ? 'text' : 'password'" :label="c.placeholder"
               label-placement="floating" fill="outline"></ion-input>
           </ion-col>
         </ion-row>
@@ -28,7 +29,7 @@
           </ion-col>
         </ion-row>
 
-        <ion-row>
+        <ion-row v-if="!isAdmin">
           <ion-col size="12" size-lg="6">
             <h3 class="text-in-line">
               <span class="ion-margin-horizontal">or login using</span>
@@ -36,7 +37,7 @@
           </ion-col>
         </ion-row>
 
-        <ion-row class="social-signins-container ion-margin-top ion-justify-content-center">
+        <ion-row v-if="!isAdmin" class="social-signins-container ion-margin-top ion-justify-content-center">
           <ion-col size="1.7" size-md="0.8" class="">
             <ion-img @click="socialSigninClick('fb')" class="social-signins" src="/assets/icons/facebook-icon.svg"
               alt=""></ion-img>
@@ -47,7 +48,7 @@
           </ion-col>
         </ion-row>
 
-        <ion-row>
+        <ion-row v-if="!isAdmin">
           <ion-col size="12" size-lg="6" class="ion-text-center ion-margin-top">
             <p>Don't have an account? <router-link to="/signup"><b class="url">Register here</b></router-link></p>
           </ion-col>
@@ -61,6 +62,7 @@
 import DefaultLayout from '@/layouts/DefaultLayout.vue';
 import { IonRow, IonCol, IonInput, IonButton, IonCheckbox } from '@ionic/vue';
 import { reactive, defineProps } from 'vue';
+import { useRoute } from 'vue-router';
 
 defineProps({
   title: {
@@ -68,6 +70,12 @@ defineProps({
     default: 'Welcome back!'
   }
 })
+
+const route = useRoute()
+
+const isAdmin = route.name === 'adminLogin'
+
+// console.log('route', route)
 
 const config = reactive([
   {

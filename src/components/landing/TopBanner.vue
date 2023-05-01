@@ -45,11 +45,11 @@
             text-capitalize="false">
             <b>Sign up</b>
           </ion-button> -->
-          <ion-row class="ion-justify-content-start">
-            <ion-col size="4" size-md="5">
+          <ion-row class="ion-justify-content-start mobile-store-container">
+            <ion-col size="12" size-xs="6" size-sm="5" size-md="5" size-lg="4">
               <ion-img class="store-icons" :src="`${assetFolder}/test/${storeImgSrc[0]}`" alt=""></ion-img>
             </ion-col>
-            <ion-col size="4" size-md="5">
+            <ion-col size="12" size-xs="6" size-sm="5" size-md="5" size-lg="4">
               <ion-img class="store-icons" :src="`${assetFolder}/test/${storeImgSrc[1]}`" alt=""></ion-img>
             </ion-col>
           </ion-row>
@@ -80,6 +80,7 @@ const topBannerMiniRightURL = '#'
 </script>
 
 <style lang="scss" scoped>
+$subBannerPadding: 32px;
 $bannerColor: #992d2e;
 
 ion-img::part(image) {
@@ -96,7 +97,7 @@ ion-img::part(image) {
 
 .banner-top {
   // width: 100%;
-  height: 300px;
+  height: 360px;
   object-fit: cover;
   margin-top: 25px;
 }
@@ -154,7 +155,7 @@ ion-img::part(image) {
 }
 
 .banner-left {
-  padding: 32px;
+  padding: $subBannerPadding;
 
   // left: 0 !important;
   // right: auto;
@@ -184,7 +185,7 @@ ion-img::part(image) {
 }
 
 .banner-right {
-  padding: 32px;
+  padding: $subBannerPadding;
 
   // left: 0 !important;
   // right: auto;
@@ -213,10 +214,16 @@ ion-img::part(image) {
     }
   }
 
-  .store-icons {
-    height: 50px;
-    width: 110px;
-    border-radius: 100%;
+  .mobile-store-container {
+    ion-col {
+      margin-top: 0.5rem;
+      margin-right: 8px;
+      padding: 0;
+
+      ion-img::part(image) {
+        border-radius: 8px;
+      }
+    }
   }
 }
 </style>

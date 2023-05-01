@@ -81,7 +81,7 @@ ion-button {
   --border-radius: 30px !important;
   --color: #fff;
 
-  font-size: 9px;
+  font-size: 11px;
 
   ion-icon {
     margin-left: 4px;
