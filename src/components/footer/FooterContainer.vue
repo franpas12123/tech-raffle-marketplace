@@ -6,7 +6,7 @@
           <ion-col size="6" size-md="3">
             <ion-row class="ion-justify-content-center">
               <ion-col size="6" size-sm="4" size-lg="6">
-                <ion-img @click="() => router.push('/')" :src="`./assets/icons/rapol-logo.svg`" alt=""></ion-img>
+                <ion-img class="logo" @click="() => router.push('/')" :src="`./assets/icons/rapol-logo.svg`" alt="" />
               </ion-col>
             </ion-row>
             <ion-row>
@@ -22,7 +22,9 @@
                   <h5>{{ footerLink.title }}</h5>
                 </ion-row>
                 <ion-row v-for="link in footerLink.links" :key="link.name">
-                  <a :href="link.link" class="link ion-margin">{{ link.name }}</a>
+                  <router-link :to="link.link">
+                    <p class="link ion-margin">{{ link.name }}</p>
+                  </router-link>
                 </ion-row>
               </ion-col>
             </ion-row>
@@ -189,5 +191,10 @@ const paymentLinks: string[] = [
 
 .link {
   font-size: 13px;
+  margin-left: 4px;
+}
+
+.logo {
+  margin-top: 18px;
 }
 </style>
