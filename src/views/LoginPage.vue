@@ -6,7 +6,7 @@
       <form @submit.prevent="onSubmit">
         <ion-row v-for="(c, i) in config" :key="i" class="ion-margin-top">
           <ion-col size="12" size-lg="6">
-            <ion-input :ref="c.name" v-model="c.vModel" :type="c?.showPass ? 'text' : 'password'" :label="c.placeholder"
+            <ion-input :ref="c.name" v-model="c.vModel" :type="c.name === 'email' ? 'text' : c?.showPass ? 'text' : 'password'" :label="c.placeholder"
               label-placement="floating" fill="outline"></ion-input>
           </ion-col>
         </ion-row>
