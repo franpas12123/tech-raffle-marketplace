@@ -217,8 +217,12 @@ ion-img::part(image) {
   .mobile-store-container {
     ion-col {
       margin-top: 0.5rem;
-      margin-right: 4px;
-      padding: 0
+      margin-right: 8px;
+      padding: 0;
+
+      ion-img::part(image) {
+        border-radius: 8px;
+      }
     }
   }
 }
