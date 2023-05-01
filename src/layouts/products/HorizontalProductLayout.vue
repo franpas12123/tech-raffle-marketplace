@@ -152,7 +152,7 @@ ion-button {
   width: 100%;
 
   // --background: #263642 !important;
-
+  --box-shadow: none;
   --border-radius: 10px !important;
   // margin-bottom: 0 !important;
   // margin-left: 0;
