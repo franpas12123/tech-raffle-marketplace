@@ -184,7 +184,7 @@ ion-button {
 }
 
 .content {
-  font-size: 12px !important;
+  font-size: 16px !important;
   margin: 0 !important;
   padding: 0 !important;
   font-weight: 400 !important;
@@ -220,5 +220,9 @@ ion-button {
 
 .card-content {
   padding: 0.8rem;
+}
+
+.price {
+  font-size: 18px;
 }
 </style>
