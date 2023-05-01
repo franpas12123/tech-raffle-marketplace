@@ -4,11 +4,9 @@
       <ion-grid fixed>
         <ion-row class="ion-justify-content-center">
           <ion-col size="6" size-md="3">
-            <ion-row class="ion-text-center">
-              <ion-col>
-                <ion-title>
-                  <h1>RAPOL</h1>
-                </ion-title>
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="6" size-sm="4" size-lg="6">
+                <ion-img @click="() => router.push('/')" :src="`./assets/icons/rapol-logo.svg`" alt=""></ion-img>
               </ion-col>
             </ion-row>
             <ion-row>
@@ -67,6 +65,9 @@
 <script setup lang="ts">
 import { IonFooter, IonTitle, IonToolbar, IonRow, IonCol, IonImg, IonGrid } from '@ionic/vue';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
 
 interface LinkGroup {
   title: string;
