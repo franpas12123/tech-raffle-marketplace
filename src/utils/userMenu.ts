@@ -1,7 +1,7 @@
 
 
 import { DashboardMenu } from '@/types/dashboardMenus';
-import { addIconSrc, addRoutesFromText } from './helpers';
+import { addIconSrc, addRoutesFromText } from './helpers/helpers';
 
 const src = './assets/icons/'; // Path to icons
 
