@@ -90,6 +90,7 @@ http://ionicframework.com/docs/theming/ */
   --horizontal-card-img-height: 230px;
 
   --border-radius: 30px;
+  --border-radius-reduced: 15px;
 
   /* progress bar */
   --progress-bar-color: #9d2d2f;
