@@ -87,6 +87,6 @@ h1 {
 .container {
   /* max-height: 60vh; */
   /* overflow: scroll; */
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 </style>
