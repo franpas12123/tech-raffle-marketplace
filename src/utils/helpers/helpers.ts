@@ -5,9 +5,9 @@ const textToRoute = (text: string) => {
 }
 
 const addRoutesFromText = (template: Array<DashboardMenu>) => template.map((menu, i) => {
-  if (i === 0) {
-    return { ...menu, route: '' }
-  }
+  // if (i === 0) {
+  //   return { ...menu, route: '' }
+  // }
   return { ...menu, route: textToRoute(menu.title) }
 })
 
@@ -17,4 +17,8 @@ const addIconSrc = (template: Array<DashboardMenu>, src: string) => template.map
   }
 })
 
-export { textToRoute, addRoutesFromText, addIconSrc };
+const getVModel = (obj: any) => obj.vModel
+
+const getConfig = (name: string, config: Array<any>) => config.find(c => c.name === name)
+
+export { textToRoute, addRoutesFromText, addIconSrc, getVModel, getConfig };

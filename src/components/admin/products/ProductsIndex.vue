@@ -1,7 +1,7 @@
 <template>
   <div>
     <ion-grid>
-      <ion-row class="ion-align-items-center">
+      <ion-row class="non-table ion-align-items-center">
         <ion-col>
           <h1 class="title">Products</h1>
         </ion-col>
@@ -13,7 +13,7 @@
         </ion-col>
       </ion-row>
       <!-- 2nd row would be the search bar -->
-      <ion-row class="ion-align-items-center">
+      <ion-row class="non-table ion-align-items-center">
         <ion-col>
           <ion-searchbar class="" placeholder="Product Name"></ion-searchbar>
         </ion-col>
@@ -26,20 +26,22 @@
       </ion-row>
       <!-- 3rd row would be the table -->
       <ion-row class="table">
-        <ion-col size="12">
+        <ion-col size="12" class="non-table">
           <ion-grid>
             <!-- table header -->
             <ion-row class="table-header">
-              <ion-col size="3">Product Name</ion-col>
+              <ion-col size="1.5">Product Name</ion-col>
+              <ion-col size="2.5">Product Description</ion-col>
               <ion-col>Stock</ion-col>
               <ion-col>Price</ion-col>
               <ion-col size="2">Categories</ion-col>
               <ion-col>Date</ion-col>
-              <ion-col>Action</ion-col>
+              <ion-col size="2">Action</ion-col>
             </ion-row>
             <ion-row v-for="(product, index) in state.products" :key="index" :class="{ 'darker-bg': index % 2 !== 0 }"
               class="ion-align-items-center">
-              <ion-col size="3">{{ product.name }}</ion-col>
+              <ion-col size="1.5">{{ product.name }}</ion-col>
+              <ion-col size="2.5">{{ product.description }}</ion-col>
               <ion-col>{{ product.stock }}</ion-col>
               <ion-col>₱{{ product.price }}</ion-col>
               <!-- <ion-col size="2">{{ product.categories[0] }}</ion-col> -->
@@ -47,13 +49,13 @@
               <ion-col>{{ formatDate(product.last_edited) }}</ion-col>
               <ion-col size="2" class="actions-column">
                 <ion-button @click="viewProduct">
-                  <ion-icon :icon="searchOutline" aria-hidden="true"></ion-icon>
+                  <ion-icon class="action-icon" :icon="searchOutline" aria-hidden="true"></ion-icon>
                 </ion-button>
                 <ion-button @click="() => router.push({ name: 'editProducts', params: { id: product.id } })">
-                  <ion-icon :icon="pencilOutline" aria-hidden="true"></ion-icon>
+                  <ion-icon class="action-icon" :icon="pencilOutline" aria-hidden="true"></ion-icon>
                 </ion-button>
                 <ion-button @click="deleteProduct(product.id, index)">
-                  <ion-icon :icon="trashOutline" aria-hidden="true"></ion-icon>
+                  <ion-icon class="action-icon" :icon="trashOutline" aria-hidden="true"></ion-icon>
                 </ion-button>
               </ion-col>
             </ion-row>

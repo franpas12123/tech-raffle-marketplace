@@ -1,6 +1,10 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
-import { RouteRecordRaw } from 'vue-router';
+import { NavigationGuardNext, RouteLocationNormalized, RouteRecordRaw } from 'vue-router';
 import TabsPage from '../views/TabsPage.vue'
+import { supabase } from '@/lib/supabaseClient';
+import { nextTick } from 'vue';
+import dayjs from 'dayjs';
+import store from '@/store';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -78,8 +82,16 @@ const routes: Array<RouteRecordRaw> = [
     props: {
       userType: 'user',
     },
+    meta: {
+      requiresAuth: true
+    },
     component: () => import('@/layouts/DashboardLayout.vue'),
     children: [
+      {
+        name: 'personalDetails',
+        path: 'personal-details',
+        component: () => import('@/components/user_details/PersonalDetails.vue'),
+      },
       {
         name: 'activeTickets',
         path: 'active-tickets',
@@ -98,7 +110,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         name: 'paymentOptions',
         path: 'payment-options',
-        component: () => import('@/components/user_details/MyAddress.vue'),
+        component: () => import('@/components/user_details/PaymentOptions.vue'),
       },
       {
         name: 'changePassword',
@@ -116,6 +128,9 @@ const routes: Array<RouteRecordRaw> = [
     name: 'adminOverview',
     props: {
       userType: 'admin',
+    },
+    meta: {
+      requiresAdminAuth: true
     },
     component: () => import('@/layouts/DashboardLayout.vue'),
     children: [
@@ -160,7 +175,19 @@ const routes: Array<RouteRecordRaw> = [
       {
         name: 'adminCampaigns',
         path: 'campaigns',
-        component: () => import('@/components/user_details/MyAddress.vue'),
+        component: () => import('@/components/admin/campaigns/CampaignsIndex.vue'),
+        children: [
+          {
+            name: 'addCampaigns',
+            path: 'add',
+            component: () => import('@/components/admin/campaigns/AddEditCampaigns.vue'),
+          },
+          {
+            name: 'editCampaigns',
+            path: 'edit/:id',
+            component: () => import('@/components/admin/campaigns/AddEditCampaigns.vue'),
+          }
+        ]
       },
       {
         name: 'adminOrders',
@@ -173,7 +200,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/components/user_details/MyAddress.vue'),
       },
       {
-        name: 'changePassword',
+        name: 'adminChangePassword',
         path: 'change-password',
         props: {
           title: 'Change Password',
@@ -181,6 +208,10 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/components/user_details/ChangePassword.vue'),
       },
     ]
+  },
+  {
+    path: '/register',
+    redirect: { name: 'signup'}
   },
   // will match everything and put it under `$route.params.pathMatch`
   {
@@ -194,5 +225,34 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+async function getUser(next: NavigationGuardNext, from?: RouteLocationNormalized, userType?: string) {
+  // const localUser = await supabase.auth.getSession();
+  // console.log('localuser', localUser)
+  console.log('from', from)
+  console.log('user', userType)
+  // if (localUser?.data?.session === null) {
+  //   store.dispatch('auth/setAuthRedirect', )
+  //   const route = '/login'
+  //   next(route)
+  // } else {
+  //   const tokenExpiry = dayjs(localUser?.data?.session?.expires_at).isAfter(dayjs())
+  //   if (tokenExpiry) {
+  //     next('/login')
+  //   } else {
+  //     next()
+  //   }
+  // }
+}
+
+// router.beforeEach((to, from, next) => {
+//   if (to.meta.requiresAdminAuth) {
+//     getUser(next, from, 'admin')
+//   } else if (to.meta.requiresAuth) {
+//     getUser(next)
+//   } else {
+//     next()
+//   }
+// })
 
 export default router

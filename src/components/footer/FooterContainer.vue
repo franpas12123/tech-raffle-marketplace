@@ -4,11 +4,9 @@
       <ion-grid fixed>
         <ion-row class="ion-justify-content-center">
           <ion-col size="6" size-md="3">
-            <ion-row class="ion-text-center">
-              <ion-col>
-                <ion-title>
-                  <h1>RAPOL</h1>
-                </ion-title>
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="6" size-sm="4" size-lg="6">
+                <ion-img class="logo" @click="() => router.push('/')" :src="`./assets/icons/rapol-logo.svg`" alt="" />
               </ion-col>
             </ion-row>
             <ion-row>
@@ -24,7 +22,9 @@
                   <h5>{{ footerLink.title }}</h5>
                 </ion-row>
                 <ion-row v-for="link in footerLink.links" :key="link.name">
-                  <a :href="link.link" class="link ion-margin">{{ link.name }}</a>
+                  <router-link :to="link.link">
+                    <p class="link ion-margin">{{ link.name }}</p>
+                  </router-link>
                 </ion-row>
               </ion-col>
             </ion-row>
@@ -67,6 +67,9 @@
 <script setup lang="ts">
 import { IonFooter, IonTitle, IonToolbar, IonRow, IonCol, IonImg, IonGrid } from '@ionic/vue';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
 
 interface LinkGroup {
   title: string;
@@ -188,5 +191,10 @@ const paymentLinks: string[] = [
 
 .link {
   font-size: 13px;
+  margin-left: 4px;
+}
+
+.logo {
+  margin-top: 18px;
 }
 </style>

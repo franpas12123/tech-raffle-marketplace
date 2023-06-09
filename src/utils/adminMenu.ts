@@ -2,7 +2,7 @@
 
 import { DashboardMenu } from '@/types/dashboardMenus';
 import { personOutline, ticket, giftOutline, locationSharp, cardOutline, cogOutline, logOutOutline, chevronForwardOutline } from 'ionicons/icons';
-import { addIconSrc, addRoutesFromText, textToRoute } from './helpers';
+import { addIconSrc, addRoutesFromText, textToRoute } from './helpers/helpers';
 
 const src = './assets/icons/'; // Path to icons
 

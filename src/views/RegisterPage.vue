@@ -42,6 +42,8 @@
 import DefaultLayout from '@/layouts/DefaultLayout.vue';
 import { IonRow, IonCol, IonInput, IonButton, IonCheckbox } from '@ionic/vue';
 import { reactive, defineProps } from 'vue';
+import { supabase } from '@/lib/supabaseClient'
+import { getConfig, getVModel } from '@/utils/helpers/helpers'
 
 defineProps({
   title: {
@@ -109,8 +111,26 @@ const config = reactive([
   }
 ])
 
-const onClick = () => {
-  console.log('config', config)
+const onClick = async () => {
+  const { data, error } = await supabase.auth.signUp(
+    // const obj = {
+    {
+      email: getVModel(getConfig('email', config)),
+      password: getVModel(getConfig('password', config)),
+      options: {
+        data: {
+          first_name: getVModel(getConfig('firstName', config)),
+          last_name: getVModel(getConfig('lastName', config)),
+          email: getVModel(getConfig('email', config)),
+          number: getVModel(getConfig('number', config)),
+          date_of_birth: getVModel(getConfig('dateOfBirth', config)),
+          gender: getVModel(getConfig('gender', config))
+        }
+      }
+    }
+  )
+  console.log('data', data, error)
+  // console.log('config', config, obj)
 }
 </script>
 

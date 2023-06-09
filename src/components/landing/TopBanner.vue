@@ -97,7 +97,7 @@ ion-img::part(image) {
 
 .banner-top {
   // width: 100%;
-  height: 360px;
+  height: 400px;
   object-fit: cover;
   margin-top: 25px;
 }
