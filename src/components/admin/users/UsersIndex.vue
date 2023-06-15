@@ -6,7 +6,7 @@
           <h1 class="title">Users</h1>
         </ion-col>
         <ion-col size="3.5">
-          <ion-button expand="block" @click="() => router.push({ name: 'addUser' })">Add User</ion-button>
+          <ion-button expand="block" @click="() => router.push({ name: 'addUsers' })">Add User</ion-button>
         </ion-col>
         <ion-col size="3.5">
           <ion-button expand="block">Export</ion-button>
