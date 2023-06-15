@@ -58,7 +58,7 @@ const getProdcutById = async () => {
   const itemId = route.params.id;
   // Use the Supabase client to query the 'items' table and fetch the item by ID
   const { data, error } = await supabase
-    .from('product')
+    .from('products')
     .select('*')
     .eq('id', itemId)
 
