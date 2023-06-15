@@ -157,7 +157,7 @@ const onClick = async () => {
 
 const insertProduct = async (payload: Product) => {
   const { data, error } = await supabase
-    .from('product')
+    .from('products')
     .insert(payload)
 
   if (error) {
@@ -171,7 +171,7 @@ const insertProduct = async (payload: Product) => {
 }
 const updateProduct = async (payload: Product) => {
   const { error } = await supabase
-    .from('product')
+    .from('products')
     .update(payload)
     .eq('id', route.params.id)
 

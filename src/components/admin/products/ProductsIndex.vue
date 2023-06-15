@@ -84,7 +84,7 @@ const state = reactive({
 
 const getProducts = async () => {
   const { data, error } = await supabase
-    .from('product')
+    .from('products')
     .select('*')
 
   state.products = data
@@ -174,7 +174,7 @@ const deleteProduct = async (id, index) => {
 
   try {
     const { data, error } = await supabase
-      .from('product')
+      .from('products')
       .delete()
       .match({ id });
 
