@@ -186,6 +186,11 @@ const routes: Array<RouteRecordRaw> = [
             name: 'editCampaigns',
             path: 'edit/:campaignId',
             component: () => import('@/components/admin/campaigns/AddEditCampaigns.vue'),
+          },
+          {
+            name: 'viewCampaign',
+            path: 'view/:campaignId/:linked_product?',
+            component: () => import('@/components/admin/campaigns/ViewCampaign.vue'),
           }
         ]
       },
