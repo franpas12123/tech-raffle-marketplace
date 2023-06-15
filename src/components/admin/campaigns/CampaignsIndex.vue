@@ -52,7 +52,8 @@
               <!-- <ion-col>{{ campaign?.linked_product }}</ion-col> -->
               <ion-col>{{ findProductFromCampaign(campaign?.linked_product)?.name }}</ion-col>
               <ion-col class="actions-column">
-                <ion-button @click="() => router.push({ name: 'viewCampaign', params: { campaignId: campaign.id } })">
+                <ion-button
+                  @click="() => router.push({ name: 'viewCampaign', params: { campaignId: campaign.id, linked_product: findProductFromCampaign(campaign?.linked_product)?.name } })">
                   <ion-icon class="action-icon" color="light" src="./assets/icons/ticket-white.svg"></ion-icon>
                 </ion-button>
                 <ion-button @click="() => router.push({ name: 'editCampaigns', params: { campaignId: campaign.id } })">
