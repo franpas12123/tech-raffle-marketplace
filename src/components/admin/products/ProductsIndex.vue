@@ -71,6 +71,7 @@ import { reactive, ref, onMounted } from 'vue';
 import { trashOutline, pencilOutline, searchOutline } from 'ionicons/icons';
 import { IonSearchbar } from '@ionic/vue'
 import { useRouter } from 'vue-router';
+import { formatDate } from '@/utils/helpers/helpers';
 // import { Product } from '@/types/product';
 
 // ignore this for now
