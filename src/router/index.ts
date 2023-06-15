@@ -219,17 +219,22 @@ const routes: Array<RouteRecordRaw> = [
       {
         name: 'adminUsers',
         path: 'users',
-        component: () => import('@/components/admin/categories/CategoriesIndex.vue'),
+        component: () => import('@/components/admin/users/UsersIndex.vue'),
         children: [
           {
-            name: 'addCategories',
+            name: 'addUsers',
             path: 'add',
-            component: () => import('@/components/admin/categories/AddEditCategories.vue'),
+            component: () => import('@/components/admin/users/AddEditUsers.vue'),
           },
           // {
-          //   name: 'editCategories',
-          //   path: 'edit/:id',
-          //   component: () => import('@/components/admin/categories/AddEditCategories.vue'),
+          //   name: 'editUsers',
+          //   path: 'edit/:user_uuid',
+          //   component: () => import('@/components/admin/users/AddEditUsers.vue'),
+          // },
+          // {
+          //   name: 'viewUsers',
+          //   path: 'view/:user_uuid',
+          //   component: () => import('@/components/admin/users/ViewUsers.vue'),
           // }
         ]
       },

@@ -4,11 +4,11 @@
       <h1 class="ion-text-center title">{{ title }}</h1>
       <form @submit.prevent="onClick">
         <ion-row v-for="(c, i) in config" :key="i" class="ion-margin-top">
-          <ion-col v-if="c.name === 'number'" size="3" size-lg="2">
+          <ion-col v-if="c.name === 'mobile_number'" size="3" size-lg="2">
             <ion-input :ref="c.name" :readonly="true" label="Country code" label-placement="floating" fill="outline"
               value="+63"></ion-input>
           </ion-col>
-          <ion-col :size="c.name === 'number' ? 9 : 12" :size-lg="c.name === 'number' ? 4 : 6">
+          <ion-col :size="c.name === 'mobile_number' ? 9 : 12" :size-lg="c.name === 'mobile_number' ? 4 : 6">
             <ion-input :ref="c.name" v-model="c.vModel"
               :type="c.type === 'password' && !c.showPass ? 'password' : c.type ? c.type : 'text'" :label="c.placeholder"
               :required="true" label-placement="floating" fill="outline"></ion-input>
@@ -73,7 +73,7 @@ const config = reactive([
     placeholder: 'Email',
   },
   {
-    name: 'number',
+    name: 'mobile_number',
     vModel: '',
     type: 'tel',
     placeholder: 'Mobile number',
@@ -112,24 +112,37 @@ const config = reactive([
 ])
 
 const onClick = async () => {
-  const { data, error } = await supabase.auth.signUp(
-    // const obj = {
-    {
-      email: getVModel(getConfig('email', config)),
-      password: getVModel(getConfig('password', config)),
-      options: {
-        data: {
-          first_name: getVModel(getConfig('firstName', config)),
-          last_name: getVModel(getConfig('lastName', config)),
-          email: getVModel(getConfig('email', config)),
-          number: getVModel(getConfig('number', config)),
-          date_of_birth: getVModel(getConfig('dateOfBirth', config)),
-          gender: getVModel(getConfig('gender', config))
-        }
-      }
-    }
-  )
-  console.log('data', data, error)
+  const { data, error } = await supabase.auth.signUp({
+    email: getVModel(getConfig('email', config)),
+    password: getVModel(getConfig('password', config))
+  })
+
+  if (error) {
+    throw new Error(error.message)
+  }
+
+  console.log('data', data)
+
+  const user_uuid = data?.user?.id
+  const gender = getVModel(getConfig('gender', config))
+
+  const payload = {
+    user_uuid,
+    first_name: getVModel(getConfig('firstName', config)),
+    last_name: getVModel(getConfig('lastName', config)),
+    email: getVModel(getConfig('email', config)),
+    mobile_number: getVModel(getConfig('mobile_number', config)),
+    date_of_birth: getVModel(getConfig('dateOfBirth', config)),
+    gender: 1, // fix gender
+    nationality: getVModel(getConfig('nationality', config))
+  }
+
+  // save to users table
+  const { data: userData, error: saveError } = await supabase
+    .from('users')
+    .insert(payload)
+
+  console.log('saving user to table', userData, saveError)
   // console.log('config', config, obj)
 }
 </script>
