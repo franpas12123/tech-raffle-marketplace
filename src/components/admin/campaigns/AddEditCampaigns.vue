@@ -9,12 +9,13 @@
         </ion-col>
       </ion-row> -->
       <ion-row v-for="(c, i) in config" :key="i" class="container">
-        <ion-col v-if="c.name !== 'campaign_id'" size="12" size-lg="6">
+        <ion-col v-if="c.name !== 'campaign_id' && c.name !== 'tickets_issued'" size="12" size-lg="6">
           <ion-input v-if="c.name !== 'description' && !c.type || c.type === 'number'" :ref="c.name" v-model="c.vModel"
             :type="c.type === 'number' ? 'number' : 'text'" :label="c.placeholder" label-placement="floating"
             :readonly="c.readonly" />
           <div v-else-if="c.type === 'date'">
-            <ion-input :ref="c.name" v-model="c.vModel" :label="c.placeholder" label-placement="floating" />
+            <ion-input :type="!edit ? 'date' : 'text'" :ref="c.name" v-model="c.vModel" :label="c.placeholder"
+              label-placement="floating" />
             <!-- {{ c.vModel }}
             <ion-datetime-button :datetime="c.name"></ion-datetime-button>
             <ion-modal :keep-contents-mounted="false">
@@ -75,6 +76,7 @@ const computedButtonName = computed(() => mode === 'Add' ? 'Add Campaign' : 'Upd
 // })
 let mounted = false
 const onmounted = computed(() => mounted)
+let edit = false
 
 let campaign: Campaign = reactive({
   id: '',
@@ -123,6 +125,7 @@ onBeforeMount(async () => {
   // store.dispatch('showToast', { message: 'Campaign added successfully', color: 'success' })
   // store.state..toast('Campaign added successfully', 'success')
   if (mode === 'Edit') {
+    edit = true
     // Get campaign details from the database when the component is mounted
     // console.log('params', route.params.campaignId)
     await getCampaign(route.params?.campaignId)
@@ -144,6 +147,8 @@ onBeforeMount(async () => {
     // assign linked product
     selectedProduct.value = campaign.linked_product
     console.log('campaign', campaign, '\nconfig', config)
+  } else {
+    edit = false
   }
 
   mounted = true
@@ -223,7 +228,7 @@ const onClick = async () => {
   console.log(payload)
 
   if (mode.toLowerCase() === 'add') {
-    payload.date_created = formatDate(new Date())
+    // payload.date_created = formatDate(new Date())
     await insertCampaign(payload)
   } else if (mode.toLowerCase() === 'edit') {
     await updateCampaign(payload)
