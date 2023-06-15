@@ -65,6 +65,7 @@ const adminMenuComponents = {
   adminCampaigns: defineAsyncComponent(() => import('@/components/admin/campaigns/CampaignsIndex.vue')),
   editCampaigns: defineAsyncComponent(() => import('@/components/admin/campaigns/AddEditCampaigns.vue')),
   addCampaigns: defineAsyncComponent(() => import('@/components/admin/campaigns/AddEditCampaigns.vue')),
+  viewCampaign: defineAsyncComponent(() => import('@/components/admin/campaigns/ViewCampaign.vue')),
 }
 
 const computedMenuComponents = computed(() => {
