@@ -150,7 +150,7 @@ const routes: Array<RouteRecordRaw> = [
           },
           {
             name: 'editProducts',
-            path: 'edit/:id',
+            path: 'edit/:productId',
             component: () => import('@/components/admin/products/AddEditProducts.vue'),
           }
         ]
@@ -167,7 +167,7 @@ const routes: Array<RouteRecordRaw> = [
           },
           {
             name: 'editCategories',
-            path: 'edit/:id',
+            path: 'edit/:categoryId',
             component: () => import('@/components/admin/categories/AddEditCategories.vue'),
           }
         ]
@@ -184,11 +184,28 @@ const routes: Array<RouteRecordRaw> = [
           },
           {
             name: 'editCampaigns',
-            path: 'edit/:id',
+            path: 'edit/:campaignId',
             component: () => import('@/components/admin/campaigns/AddEditCampaigns.vue'),
           }
         ]
       },
+      // {
+      //   name: 'adminOrders',
+      //   path: 'orders',
+      //   component: () => import('@/components/admin/orders/OrdersIndex.vue'),
+      //   children: [
+      //     {
+      //       name: 'addCampaigns',
+      //       path: 'add',
+      //       component: () => import('@/components/admin/orders/AddEditCampaigns.vue'),
+      //     },
+      //     {
+      //       name: 'editCampaigns',
+      //       path: 'edit/:id',
+      //       component: () => import('@/components/admin/orders/AddEditCampaigns.vue'),
+      //     }
+      //   ]
+      // },
       {
         name: 'adminOrders',
         path: 'orders',
@@ -197,7 +214,19 @@ const routes: Array<RouteRecordRaw> = [
       {
         name: 'adminUsers',
         path: 'users',
-        component: () => import('@/components/user_details/MyAddress.vue'),
+        component: () => import('@/components/admin/categories/CategoriesIndex.vue'),
+        children: [
+          {
+            name: 'addCategories',
+            path: 'add',
+            component: () => import('@/components/admin/categories/AddEditCategories.vue'),
+          },
+          // {
+          //   name: 'editCategories',
+          //   path: 'edit/:id',
+          //   component: () => import('@/components/admin/categories/AddEditCategories.vue'),
+          // }
+        ]
       },
       {
         name: 'adminChangePassword',
