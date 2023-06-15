@@ -51,7 +51,7 @@
                 <ion-button @click="viewProduct">
                   <ion-icon class="action-icon" :icon="searchOutline" aria-hidden="true"></ion-icon>
                 </ion-button>
-                <ion-button @click="() => router.push({ name: 'editProducts', params: { id: product.id } })">
+                <ion-button @click="() => router.push({ name: 'editProducts', params: { productsId: product.id } })">
                   <ion-icon class="action-icon" :icon="pencilOutline" aria-hidden="true"></ion-icon>
                 </ion-button>
                 <ion-button @click="deleteProduct(product.id, index)">
@@ -71,7 +71,6 @@ import { reactive, ref, onMounted } from 'vue';
 import { trashOutline, pencilOutline, searchOutline } from 'ionicons/icons';
 import { IonSearchbar } from '@ionic/vue'
 import { useRouter } from 'vue-router';
-import dayjs from 'dayjs'
 // import { Product } from '@/types/product';
 
 // ignore this for now
@@ -196,11 +195,6 @@ const viewProduct = () => {
 
 const editProduct = () => {
   console.log('edit product')
-}
-
-// a function to convert a js date to dayjs date in this format('DD/MM/YYYY')
-const formatDate = (date) => {
-  return dayjs(date).format('DD/MM/YYYY')
 }
 
 
