@@ -48,7 +48,7 @@
               <ion-col class="actions-column">
                 <ion-button disabled
                   @click="() => router.push({ name: 'viewUsers', params: { user_uuid: user.user_uuid } })">
-                  <ion-icon class="action-icon" color="light" src="./assets/icons/ticket-white.svg"></ion-icon>
+                  <ion-icon class="action-icon" :icon="searchOutline" aria-hidden="true"></ion-icon>
                 </ion-button>
                 <ion-button disabled
                   @click="() => router.push({ name: 'editUsers', params: { user_uuid: user.user_uuid } })">

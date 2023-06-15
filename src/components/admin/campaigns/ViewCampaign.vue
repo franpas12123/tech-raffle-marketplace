@@ -44,10 +44,11 @@
                 <!-- <ion-button @click="viewCampaign">
                   <ion-icon class="action-icon" color="light" src="./assets/icons/ticket-white.svg"></ion-icon>
                 </ion-button> -->
-                <ion-button @click="() => router.push({ name: 'editCampaigns', params: { ticketId: ticket.id } })">
+                <ion-button disabled
+                  @click="() => router.push({ name: 'editCampaigns', params: { ticketId: ticket.id } })">
                   <ion-icon class="action-icon" :icon="pencilOutline" aria-hidden="true"></ion-icon>
                 </ion-button>
-                <ion-button @click="deleteCampaign(ticket.id, index)">
+                <ion-button disabled @click="deleteCampaign(ticket.id, index)">
                   <ion-icon class="action-icon" :icon="trashOutline" aria-hidden="true"></ion-icon>
                 </ion-button>
               </ion-col>
