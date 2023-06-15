@@ -51,7 +51,7 @@
                 <ion-button @click="viewProduct">
                   <ion-icon class="action-icon" :icon="searchOutline" aria-hidden="true"></ion-icon>
                 </ion-button>
-                <ion-button @click="() => router.push({ name: 'editProducts', params: { productsId: product.id } })">
+                <ion-button @click="() => router.push({ name: 'editProducts', params: { productId: product.id } })">
                   <ion-icon class="action-icon" :icon="pencilOutline" aria-hidden="true"></ion-icon>
                 </ion-button>
                 <ion-button @click="deleteProduct(product.id, index)">
